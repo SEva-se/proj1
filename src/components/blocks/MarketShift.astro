@@ -1,0 +1,314 @@
+---
+// blk4 · Market Shift Report — «Обследование рынка».
+// Весь текст ДОСЛОВНО из «Сайт новый.html». Ничего не переписывать.
+// 5 карточек сдвигов (Раньше → Сейчас → Что нужно делать) + like-кнопка + closer.
+
+const shifts = [
+  {
+    num: '01', domain: 'Запуски', theme: 'purple',
+    past: 'тёплые запуски в Instagram работали почти у всех, конверсия с охватов доходила до 20% собрал аудиторию, прогрел, продал.',
+    now: 'тёплые запуски просели, аудитория устала от прогревов.',
+    fix: 'системные воронки, а не разовые запуски на энергии.',
+  },
+  {
+    num: '02', domain: 'Трафик', theme: 'blue',
+    past: 'холодный трафик окупался легко, в среднем лид стоил 3$, заявки были дешёвыми.',
+    now: 'трафик подорожал х2-х3, та же реклама приносит меньше при том же бюджете.',
+    fix: 'сильный оффер, связка и аналитика, а не просто «лить больше»',
+  },
+  {
+    num: '03', domain: 'Контент', theme: 'amber',
+    past: 'контент сам по себе продавал, выкладывал и получал заявки.',
+    now: 'контента у всех много, внимание рассеяно, охваты упали.',
+    fix: 'контент, встроенный в воронку, а не «просто чаще постить».',
+  },
+  {
+    num: '04', domain: 'Доверие', theme: 'emerald',
+    past: 'хватало сильного эксперта и оффера в лоб, аудитория верила.',
+    now: 'аудитория стала осознанней, обещаниям не верит, упало доверие',
+    fix: 'доказательная упаковка и понятный путь к покупке.',
+  },
+  {
+    num: '05', domain: 'Система', theme: 'gold',
+    past: 'половина рынка двигалась на энергии, хаотичные действия, никакой системы, но запуски залетали и деньги шли.',
+    now: 'без системы и выстроенных процессов рано или поздно вылетаешь с рынка. На одной энергии больше не уехать.',
+    fix: 'взрослый, осознанный подход, где оффер, контент, трафик, воронка и продажи работают как единый организм. Понятная, масштабируемая модель.',
+  },
+];
+
+// SVG-иконки для каждого домена (линейные, мед-стиль)
+const domainIcons: Record<string, string> = {
+  'Запуски': 'M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3M22 2L13 11',
+  'Трафик': 'M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6',
+  'Контент': 'M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2zM14 2v6h6M16 13H8M16 17H8M10 9H8',
+  'Доверие': 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  'Система': 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+};
+---
+<section class="section" id="blk4">
+  <div class="container">
+    <div class="rv d1"><span class="badge-pill gold">📉 Аналитика 2024</span></div>
+    <span class="eyebrow rv d1">Обследование рынка · Market Shift Report</span>
+    <div class="ms-title-wrap rv d2">
+      <h2>Давайте примем тот факт, что <span class="text-hl-bg">рынок поменялся</span>. Старые инструменты работают всё хуже и тех, кто не перестроится, со временем просто <span class="am">смоет с рынка</span></h2>
+      <div class="ms-globe">🌍</div>
+    </div>
+
+    <div class="like-wrap rv d3">
+      <button class="like hover-card" id="likeBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span>Ставь лайк если согласен 👍</span>
+      </button>
+      <span class="like-hint" id="likeHint">нажмите, если узнали рынок</span>
+    </div>
+
+    <div class="report">
+      {shifts.map((s) => (
+        <div class={`shift-card rv theme-${s.theme}`}>
+          <div class="sc-glow"></div>
+          <div class="sc-watermark">{s.num}</div>
+          
+          <div class="sc-head">
+            <span class="sc-badge">Сдвиг · {s.num}</span>
+            <span class="sc-title">{s.domain}</span>
+            <div class="sc-icon"><svg viewBox="0 0 24 24"><path d={domainIcons[s.domain]} /></svg></div>
+          </div>
+          
+          <div class="sc-body">
+            <div class="sc-past">
+              <div class="sc-lbl">Раньше</div>
+              <p>{s.past}</p>
+            </div>
+            
+            <div class="sc-vs">
+              <div class="vs-line"></div>
+              <div class="vs-badge">VS</div>
+              <div class="vs-line"></div>
+            </div>
+            
+            <div class="sc-now">
+              <div class="sc-lbl">Сейчас</div>
+              <p>{s.now}</p>
+            </div>
+          </div>
+          
+          <div class="sc-action">
+            <div class="sc-action-bg"></div>
+            <div class="sc-action-content">
+              <div class="sc-lbl">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                РЕШЕНИЕ
+              </div>
+              <p>{s.fix}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="closer rv">
+      <h3>Дело не в том, что вы стали хуже работать. <br/><span>Поменялись правила игры.</span></h3>
+      <p>Обследование покажет, что именно в вашем проекте уже устарело, и где вы теряете деньги прямо сейчас. Пора пересобрать проект, пока за вас это не сделали конкуренты.</p>
+      <a href="/zayavka" class="cta-btn">
+        Проверить, что устарело
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    const b = document.getElementById('likeBtn');
+    const h = document.getElementById('likeHint');
+    if (!b) return;
+    b.addEventListener('click', function(){
+      const on = b.classList.toggle('liked');
+      if (on && navigator.vibrate) navigator.vibrate(35);
+      if (h) h.textContent = on ? 'красавчик' : 'нажмите, если узнали рынок';
+    });
+  })();
+</script>
+
+<style>
+  .ms-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 4vw, 40px);
+    margin: 18px 0 clamp(28px, 4vw, 40px);
+    max-width: 800px;
+  }
+  #blk4 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 0; max-width: 26ch; flex: 1; }
+  .ms-globe {
+    font-size: clamp(70px, 12vw, 130px);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 40px rgba(63,221,154,0.15));
+    animation: float 8s ease-in-out infinite;
+  }
+  @media (max-width: 760px) {
+    .ms-title-wrap { flex-direction: column; align-items: flex-start; gap: 0; }
+    .ms-globe { align-self: flex-end; margin-top: -30px; margin-right: 10px; font-size: 90px; }
+  }
+
+  /* ---- like ---- */
+  .like-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(32px, 5vw, 52px); flex-wrap: wrap; }
+  .like {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 22px; border-radius: 100px;
+    border: 1px solid var(--line); background: var(--surface-2);
+    color: var(--bone); font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.35s var(--ease);
+    user-select: none;
+  }
+  .like svg {
+    width: 18px; height: 18px; fill: none; stroke: var(--mute);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    transition: all 0.35s var(--ease);
+  }
+  .like:hover { border-color: var(--vital-line); }
+  .like:global(.liked) { border-color: var(--vital); background: var(--vital-soft); }
+  .like:global(.liked) svg { fill: var(--vital); stroke: var(--vital); }
+  .like-hint { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute-2); }
+
+  /* ---- report (full-width) ---- */
+  .report { display: flex; flex-direction: column; gap: 40px; margin-top: 20px; }
+
+  /* Theme variables */
+  .theme-purple { --sc-accent: #b066ff; --sc-soft: rgba(176, 102, 255, 0.08); --sc-glow: rgba(176, 102, 255, 0.15); }
+  .theme-blue   { --sc-accent: #3b82f6; --sc-soft: rgba(59, 130, 246, 0.08); --sc-glow: rgba(59, 130, 246, 0.15); }
+  .theme-amber  { --sc-accent: #f59e0b; --sc-soft: rgba(245, 158, 11, 0.08); --sc-glow: rgba(245, 158, 11, 0.15); }
+  .theme-emerald{ --sc-accent: #10b981; --sc-soft: rgba(16, 185, 129, 0.08); --sc-glow: rgba(16, 185, 129, 0.15); }
+  .theme-gold   { --sc-accent: #eab308; --sc-soft: rgba(234, 179, 8, 0.08);  --sc-glow: rgba(234, 179, 8, 0.15); }
+
+  .shift-card {
+    position: relative; width: 100%;
+    border: 1px solid rgba(236, 234, 228, 0.12); border-radius: 16px; overflow: hidden;
+    background: var(--surface-2);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .shift-card:hover { 
+    border-color: var(--sc-accent); 
+    transform: translateY(-4px); 
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px var(--sc-soft); 
+  }
+
+  @media (min-width: 900px) {
+    .report { gap: 40px; padding: 20px 0; }
+    .sc-title { font-size: 26px !important; }
+    .sc-past p, .sc-now p, .sc-action p { font-size: 18px !important; }
+  }
+
+  /* Internal structure */
+  .sc-glow {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--sc-glow) 0%, transparent 60%);
+    opacity: 0; pointer-events: none; transition: opacity 0.6s ease; mix-blend-mode: screen;
+  }
+  .shift-card:hover .sc-glow { opacity: 1; }
+
+  .sc-watermark {
+    position: absolute; right: 10px; top: -20px;
+    font-size: 180px; font-weight: 900; line-height: 1; font-family: var(--font-mono);
+    color: var(--sc-accent); opacity: 0.03;
+    pointer-events: none; user-select: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .shift-card:hover .sc-watermark { opacity: 0.06; transform: scale(1.02); }
+
+  .sc-head {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; gap: 14px;
+    padding: 24px 28px; border-bottom: 1px solid rgba(236, 234, 228, 0.08);
+  }
+  .sc-badge {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--sc-accent); border: 1px solid var(--sc-accent); border-radius: 100px; padding: 4px 12px;
+  }
+  .sc-title { font-size: 22px; font-weight: 700; color: var(--bone); flex: 1; text-transform: uppercase; letter-spacing: 0.02em; }
+  .sc-icon { 
+    width: 36px; height: 36px; border-radius: 8px; background: var(--sc-soft); 
+    display: grid; place-items: center; border: 1px solid var(--sc-glow); flex: none;
+  }
+  .sc-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--sc-accent); stroke-width: 2; }
+
+  .sc-body { position: relative; z-index: 2; padding: 28px 28px 12px; display: flex; flex-direction: column; gap: 20px; }
+
+  .sc-lbl { font-family: var(--font-mono); font-size: 13px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; }
+  
+  .sc-past .sc-lbl { color: var(--mute-2); opacity: 0.8; }
+  .sc-past p { color: var(--bone); font-size: 16px; line-height: 1.5; font-weight: 600; text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.2); text-transform: uppercase; }
+
+  .sc-vs { display: flex; align-items: center; gap: 12px; opacity: 0.7; }
+  .vs-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(236, 234, 228, 0.15), transparent); }
+  .vs-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--mute-2); letter-spacing: 0.1em; }
+
+  .sc-now .sc-lbl { color: var(--sc-accent); gap: 8px; }
+  .sc-now .sc-lbl::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sc-accent); box-shadow: 0 0 10px var(--sc-accent);
+    animation: pulse 2s infinite;
+  }
+  .sc-now p { color: var(--bone); font-size: 16px; line-height: 1.5; font-weight: 600; text-transform: uppercase; }
+
+  .sc-action {
+    position: relative; z-index: 2;
+    margin: 16px 28px 28px; padding: 20px 24px;
+    border-radius: 12px; overflow: hidden;
+    background: var(--sc-soft); border: 1px solid var(--sc-glow);
+  }
+  .sc-action-bg {
+    position: absolute; inset: 0; background: linear-gradient(135deg, transparent, var(--sc-glow)); opacity: 0; transition: opacity 0.4s ease;
+  }
+  .shift-card:hover .sc-action-bg { opacity: 1; }
+  
+  @keyframes glow-pulse {
+    0% { text-shadow: 0 0 5px var(--sc-glow); transform: scale(1); }
+    100% { text-shadow: 0 0 15px var(--sc-accent); transform: scale(1.02); }
+  }
+  .sc-action-content { position: relative; z-index: 3; }
+  .sc-action .sc-lbl { gap: 8px; color: var(--sc-accent); margin-bottom: 14px; font-size: 14px; animation: glow-pulse 2s infinite alternate; }
+  .sc-action .sc-lbl svg { width: 16px; height: 16px; fill: none; stroke: var(--sc-accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .sc-action p { color: var(--bone); font-size: 16px; line-height: 1.5; font-weight: 600; text-transform: uppercase; }
+
+  /* ---- closer ---- */
+  .closer {
+    max-width: 900px; margin: clamp(60px, 8vw, 100px) auto 0;
+    padding: clamp(40px, 6vw, 60px) 0;
+    border-top: 1px solid var(--line);
+    text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 4vw, 36px);
+  }
+  .closer h3 {
+    font-size: clamp(24px, 3.5vw, 38px); line-height: 1.2; color: var(--bone); font-weight: 700;
+  }
+  .closer h3 span { color: var(--vital); }
+  .closer p {
+    font-size: clamp(16px, 2vw, 18px); line-height: 1.6; color: var(--mute); max-width: 580px;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 18px 40px; border-radius: 100px;
+    background: var(--vital); color: #000; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    box-shadow: 0 0 20px var(--vital-line);
+    text-decoration: none; width: fit-content;
+  }
+  .cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px var(--vital-soft);
+  }
+  .cta-btn svg { width: 20px; height: 20px; stroke: #000; stroke-width: 2.5; fill: none; }
+
+  @media (max-width: 600px) {
+    .sc-head { padding: 20px; flex-wrap: wrap; }
+    .sc-title { font-size: 18px; }
+    .sc-body { padding: 20px 20px 8px; }
+    .sc-action { margin: 12px 20px 20px; padding: 16px 20px; }
+    .cta-btn { width: 100%; padding: 18px 20px; font-size: 16px; }
+  }
+
+  @media (max-width: 560px) {
+    .closer .btn { width: 100%; }
+  }
+</style>

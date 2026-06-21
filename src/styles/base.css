@@ -1,0 +1,246 @@
+/* base.css — сброс, типографика, общие утилиты и анимации.
+   Подключается после tokens.css. См. DESIGN.md §3–§7. */
+
+/* самохостинг шрифтов (Fontsource variable, index.css включает latin+cyrillic) */
+@import '@fontsource-variable/montserrat/index.css';
+@import '@fontsource-variable/caveat/index.css';
+@import '@fontsource-variable/jetbrains-mono/index.css';
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+
+::selection { background: var(--vital); color: #04140c; }
+
+/* ---- типографика ---- */
+h1, h2, h3 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.hl { color: var(--vital); }
+.am { color: var(--amber); }
+
+/* каллиграфический акцент — «почерк врача», строго дозированно (DESIGN.md §3) */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--vital);
+  line-height: 1;
+}
+
+/* технические лейблы */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vital);
+}
+.eyebrow::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--vital);
+  box-shadow: 0 0 12px var(--vital);
+}
+
+/* ---- layout утилиты ---- */
+.container {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+.section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
+.sdiv {
+  height: 1px;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+/* ---- кнопка ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 18px 34px;
+  border-radius: 100px;
+  background: var(--vital);
+  color: #04140c;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 16px 44px -12px var(--vital-line); }
+.btn:focus-visible { outline: 2px solid var(--vital); outline-offset: 3px; }
+.btn svg { width: 17px; height: 17px; stroke: #04140c; fill: none; stroke-width: 2.2; }
+.btn.lg { padding: 20px 38px; font-size: 17px; }
+.btn.ghost { background: transparent; color: var(--bone); border: 1px solid var(--line); }
+.btn.ghost svg { stroke: var(--bone); }
+
+/* ---- иконка-в-капсуле (DESIGN.md §6) ---- */
+.ic-cap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  border-radius: var(--r-sm);
+  background: var(--vital-soft);
+  border: 1px solid var(--vital-line);
+}
+.ic-cap svg { width: 24px; height: 24px; fill: none; stroke: var(--vital); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ic-cap.gold { background: var(--gold-soft); border-color: var(--gold-line); }
+.ic-cap.gold svg { stroke: var(--gold); }
+
+/* ---- reveal-on-scroll ---- */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+.rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: 0.08s; }
+.rv.d2 { transition-delay: 0.16s; }
+.rv.d3 { transition-delay: 0.24s; }
+
+/* ---- keyframes (из исходника + новые) ---- */
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(63,221,154,.45); } 70% { box-shadow: 0 0 0 20px rgba(63,221,154,0); } 100% { box-shadow: 0 0 0 0 rgba(63,221,154,0); } }
+@keyframes draw { to { stroke-dashoffset: -1500; } }
+@keyframes pop { 0% { transform: scale(1); } 35% { transform: scale(1.4); } 60% { transform: scale(.9); } 100% { transform: scale(1); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes twinkle { 0%, 100% { opacity: .25; transform: scale(.85); } 50% { opacity: 1; transform: scale(1); } }
+
+/* ---- доступность: гасим движение ---- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .rv { opacity: 1; transform: none; }
+}
+
+/* ---- кастомный курсор ---- */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s, transform 0.15s ease-out;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--vital);
+  box-shadow: 0 0 10px var(--vital);
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px dashed var(--vital-line);
+  transition: transform 0.3s ease-out, opacity 0.3s;
+}
+body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
+.cursor-hover .cursor-dot { transform: translate(-50%, -50%) scale(1.5); background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.cursor-hover .cursor-ring { transform: translate(-50%, -50%) scale(1.5); border-color: var(--gold-line); border-style: solid; }
+
+body.custom-cursor-active, body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* ---- текстовые акценты и плашки ---- */
+.badge-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(8, 9, 11, 0.6); border: 1px solid var(--vital-line);
+  color: var(--vital); border-radius: 20px; padding: 4px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+  animation: float 6s ease-in-out infinite;
+}
+.badge-pill.gold { color: var(--gold); border-color: var(--gold-line); }
+
+.text-hl-bg {
+  color: var(--bone);
+  padding: 0 4px;
+  background-image: linear-gradient(var(--vital-line), var(--vital-line));
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  transition: background-size 0.6s var(--ease);
+  border-radius: 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.rv.in .text-hl-bg {
+  background-size: 100% 100%;
+  transition-delay: 0.4s;
+}
+
+/* ---- микро-анимации карточек (усиленный hover) ---- */
+.hover-card { transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.hover-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--vital-line);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--vital-soft);
+}
+.hover-card:hover .ic-cap { background: var(--vital-line); border-color: var(--vital); }
+.hover-card:hover .ic-cap svg { stroke: var(--bone); filter: drop-shadow(0 0 6px var(--vital)); }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px var(--vital-line); }
+  50% { box-shadow: 0 0 24px var(--vital); }
+}
+.btn.lg.pulse { animation: pulse-glow 3s infinite; }
+
+/* ---- заголовки с эмодзи (чтобы эмодзи стоял сбоку от текста) ---- */
+.title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.title-wrap.center {
+  justify-content: center;
+}
+.title-emoji {
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1;
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .title-wrap { gap: 12px; }
+  .title-emoji { font-size: clamp(28px, 4vw, 36px); }
+}
+
+.e {
+  display: inline-block;
+  margin-left: 0.25em;
+  vertical-align: baseline;
+  font-family: sans-serif;
+}

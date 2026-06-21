@@ -1,0 +1,101 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import Background from '../components/fx/Background.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Частная диагностика проекта: продукт, оффер, воронка, трафик и продажи. Точный диагноз и план действий за 90 минут.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#08090B" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <Background />
+    <div class="page-wrap">
+      <slot />
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <script>
+      import { initReveal } from '../scripts/reveal';
+      initReveal();
+
+      // Cursor logic
+      function initCursor() {
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        if (!dot || !ring) return;
+
+        // Only enable on non-touch devices
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          dot.style.display = 'none';
+          ring.style.display = 'none';
+          return;
+        }
+
+        document.body.classList.add('custom-cursor-active');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let dotX = mouseX;
+        let dotY = mouseY;
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Add hover effect to interactive elements
+        const interactives = document.querySelectorAll('a, button, .hover-card, .btn');
+        interactives.forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        function animate() {
+          // Smooth follow logic
+          dotX += (mouseX - dotX) * 0.2;
+          dotY += (mouseY - dotY) * 0.2;
+          ringX += (mouseX - ringX) * 0.1;
+          ringY += (mouseY - ringY) * 0.1;
+
+          dot.style.left = `${dotX}px`;
+          dot.style.top = `${dotY}px`;
+          ring.style.left = `${ringX}px`;
+          ring.style.top = `${ringY}px`;
+
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      }
+
+      document.addEventListener('DOMContentLoaded', initCursor);
+      document.addEventListener('astro:page-load', initCursor);
+    </script>
+  </body>
+</html>
+
+<style>
+  .page-wrap { position: relative; z-index: 1; }
+</style>

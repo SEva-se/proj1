@@ -1,0 +1,16 @@
+# build
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# env / secrets (приёмник формы — токены не коммитить)
+.env
+.env.*
+!.env.example
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,65 @@
+---
+// blk1 · HERO. Весь видимый текст — ДОСЛОВНО из «Сайт новый.html» (не менять).
+// Видео-монитор и чипы перенесены в Section2VideoIntro (CTA ведёт на анкету).
+---
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="rv d1"><span class="badge-pill">🔥 Доступно ограниченно</span></div>
+      <span class="eyebrow rv d1">Персональная диагностика · для экспертов и онлайн-школ</span>
+
+      <h1 class="rv d2">
+        <span class="hand">За 90 минут</span> найду <span class="hl text-hl-bg">3 точки</span>,
+        из-за которых ваш проект теряет клиентов, заявки и деньги<span class="e">💸</span>
+      </h1>
+
+      <div class="lead rv d3">
+        <p>Это не очередная бесплатная консультация и не созвон ради продажи. Это глубокое обследование вашего проекта, чтобы найти причину, которая сдерживает рост, и дать вам понятный план дальнейших действий 🚀.</p>
+      </div>
+
+      <div class="cta-block rv d3">
+        <a href="/zayavka" class="btn lg pulse">
+          Пройти бесплатное обследование проекта
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="social">
+          <span>Более <b>100</b> проведённых обследований проектов</span>
+          <span class="sep"></span>
+          <span><span class="stars">★★★★★</span> <b>5.0</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: clamp(36px, 5vw, 70px) 0 clamp(48px, 7vw, 84px); }
+  .hero-copy { max-width: 760px; margin-inline: auto; text-align: center; }
+
+  /* плотный болд-заголовок (sentence case — длинный реальный текст) */
+  .hero h1 {
+    font-size: clamp(29px, 3.9vw, 50px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 22px 0 22px;
+  }
+  .hero h1 .hl { color: var(--vital); }
+  .hero h1 .hand {
+    font-family: var(--font-hand); font-weight: 700;
+    font-size: 1.15em; color: var(--vital);
+    letter-spacing: 0; line-height: 1;
+  }
+  .lead p { color: var(--mute); font-size: clamp(15px, 1.6vw, 18px); line-height: 1.6; max-width: 520px; margin-inline: auto; font-weight: 500; }
+
+  .cta-block { margin-top: 30px; display: flex; flex-direction: column; align-items: center; }
+  .cta-block .btn.lg { border-radius: 6px; }
+  .social { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 14px; margin-top: 20px; font-size: 14px; color: var(--mute); }
+  .social b { color: var(--bone); font-weight: 700; }
+  .social .stars { color: var(--gold); letter-spacing: 2px; }
+  .social .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--mute-2); }
+
+  @media (max-width: 560px) {
+    .cta-block .btn.lg { width: 100%; }
+  }
+</style>

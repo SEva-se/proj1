@@ -1,0 +1,252 @@
+---
+// blk5 · Методология диагностики — протокол обследования.
+// Весь текст ДОСЛОВНО из «Сайт новый.html». 4 шага + аудит + скриншоты.
+import { Image } from 'astro:assets';
+import img05 from '../../assets/img/img-05-8cc9af80.jpg';
+import img07 from '../../assets/img/img-07-f4481027.jpg';
+import img09 from '../../assets/img/img-09-b01b3f95.jpg';
+import img11 from '../../assets/img/img-11-a8dde50b.jpg';
+import img13 from '../../assets/img/img-13-37e7a116.jpg';
+import img15 from '../../assets/img/img-15-fd1100a2.jpg';
+
+const steps = [
+  {
+    num: '01', tag: '01 · Обследование',
+    h3: 'Вскрываем проект по 10 зонам',
+    p: 'Прогоняем проект через маркетинговый сканер по 10 зонам: позиционирование, аудитория, оффер, продукт, контент, трафик, воронка, продажи, запуски, аналитика. Каждой зоне ставим оценку.',
+    shots: [
+      { src: img05, label: 'ЗОНЫ С 1 ПО 5', alt: 'Зоны 1-5' },
+      { src: img07, label: 'ЗОНЫ С 6 ПО 10', alt: 'Зоны 6-10' },
+    ],
+    two: true, rev: false,
+  },
+  {
+    num: '02', tag: '02 · Диагностика',
+    h3: 'Видим, где проект проседает',
+    p: 'Сканер сводит все оценки в один снимок проекта. Виден общий балл и зоны, которые тянут вас вниз. Ничего на глаз, только показатели.',
+    shots: [
+      { src: img09, label: 'ДИАГНОСТИКА СИСТЕМЫ', alt: 'Диагностика системы и колесо баланса' },
+    ],
+    two: false, rev: true,
+  },
+  {
+    num: '03', tag: '03 · Диагноз',
+    h3: 'Вскрываем 3 самые болевые зоны',
+    p: 'Из всех зон сканер вытаскивает три самых слабых, очаги, где прямо сейчас утекают деньги. С них и начинаем.',
+    shots: [
+      { src: img11, label: 'ТОЧКИ ПОТЕРИ ПРИБЫЛИ', alt: 'Топ-3 слабые зоны' },
+    ],
+    two: false, rev: false,
+  },
+  {
+    num: '04', tag: '04 · План лечения',
+    h3: 'Персональный план действий',
+    p: 'Под каждую больную зону свое конкретное лечение: что делать, какими инструментами и в какие сроки. Не советы «вообще», а маршрут под ваш проект.',
+    shots: [
+      { src: img13, label: 'ПЛАН ДЕЙСТВИЙ', alt: 'План действий' },
+    ],
+    two: false, rev: true,
+  },
+];
+---
+<section class="section" id="blk5">
+  <div class="container">
+    <div class="rv d1"><span class="badge-pill">⚙️ Технология обследования</span></div>
+    <span class="eyebrow rv d1">Методология диагностики</span>
+    <div class="title-wrap rv d2">
+      <h2>По какой технологии мы <span class="hl text-hl-bg">обследуем</span> ваш проект</h2>
+      <div class="title-emoji">🔬</div>
+    </div>
+    <p class="lead rv d3">Каждый проект проходит через маркетинговый сканер. Ниже реальные экраны с диагностической сессии.</p>
+
+    <div class="protocol-timeline">
+      {steps.map((s) => (
+        <div class="pt-step rv">
+          <div class="pt-marker"></div>
+          <div class="pt-card hover-card">
+            <div class="pt-info">
+              <div class="pt-snum">{s.num}</div>
+              <div class="pt-tag">{s.tag}</div>
+              <h3>{s.h3}</h3>
+              <p>{s.p}</p>
+            </div>
+            
+            <div class={`pt-media-grid cols-${s.shots.length}`}>
+              {s.shots.map((shot) => (
+                <div class="pt-media">
+                  <div class="mon-bar">
+                    <span class="d"></span><span class="d"></span><span class="d"></span>
+                    <span class="l">{shot.label}</span>
+                  </div>
+                  <div class="pt-shotbox">
+                    <Image src={shot.src} alt={shot.alt} loading="lazy" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <!-- audit document -->
+      <div class="pt-step rv">
+        <div class="pt-marker final"></div>
+        <div class="pt-card audit-card hover-card">
+          <div class="pt-info">
+            <div class="pt-snum">05</div>
+            <div class="pt-tag">05 · Что вы получаете</div>
+            <h3>Итоговый аудит-документ 📋</h3>
+            <p class="sub">История болезни вашего проекта на ~20 страницах. После обследования у вас остаётся большой PDF: глубокая аналитика текущей ситуации, разбор по ключевым метрикам и стратегия развития с учётом новых инструментов и анализа рынка. Внутри:</p>
+            <ul class="toc">
+              <li><span class="n">01</span><div><span class="t">Глубокая аналитика текущей ситуации (Диагноз) 🩺</span>
+                <ul class="hidden"><li>Скрытая проблема №1</li><li>№2</li><li>№3</li><li>№4</li></ul>
+              </div></li>
+              <li><span class="n">02</span><div><span class="t">Разбор по ключевым векторам 📈</span></div></li>
+              <li><span class="n">03</span><div><span class="t">Стратегия систематизации и масштабирования (Roadmap) 🗺️</span></div></li>
+              <li><span class="n">04</span><div><span class="t">Пошаговый план выхода из операционки (Action Plan на 30 дней) ⚡</span></div></li>
+            </ul>
+          </div>
+          <div class="pt-media-grid cols-1">
+            <div class="pt-media doc-media">
+              <div class="mon-bar">
+                <span class="d"></span><span class="d"></span><span class="d"></span>
+                <span class="l">ИТОГОВЫЙ АУДИТ · PDF</span>
+              </div>
+              <div class="pt-shotbox">
+                <Image src={img15} alt="Готовый аудит проекта" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-wrap rv">
+      <a href="/zayavka" class="btn pulse">
+        Пройти обследование и получить аудит
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #blk5 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 14px; max-width: 20ch; }
+  .lead { color: var(--mute); font-size: clamp(15px, 1.8vw, 19px); line-height: 1.6; max-width: 56ch; margin-bottom: clamp(40px, 6vw, 64px); font-weight: 500; }
+
+  /* ---- protocol timeline ---- */
+  .protocol-timeline {
+    display: flex; flex-direction: column; gap: 32px; position: relative;
+    margin-top: 40px;
+  }
+  @media (min-width: 900px) {
+    .protocol-timeline::before {
+      content: ''; position: absolute; top: 32px; bottom: 32px; left: 19px;
+      width: 2px; background: linear-gradient(180deg, var(--vital), transparent);
+      opacity: 0.2;
+    }
+  }
+
+  .pt-step {
+    position: relative; 
+  }
+  @media (min-width: 900px) {
+    .pt-step { padding-left: 60px; }
+  }
+
+  .pt-marker {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .pt-marker {
+      display: block; position: absolute; left: 13px; top: 40px; width: 14px; height: 14px;
+      background: var(--surface-2); border: 2px solid var(--vital); border-radius: 50%;
+      box-shadow: 0 0 10px var(--vital); z-index: 2;
+    }
+    .pt-marker.final {
+      background: var(--vital); box-shadow: 0 0 20px var(--vital); width: 18px; height: 18px; left: 11px;
+    }
+  }
+
+  /* ---- bento cards ---- */
+  .pt-card {
+    display: grid; grid-template-columns: 1fr; gap: 24px;
+    background: var(--surface-2); border: 1px solid rgba(236, 234, 228, 0.08);
+    border-radius: 16px; padding: 24px; overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s ease;
+  }
+  .pt-card:hover { border-color: rgba(236, 234, 228, 0.15); transform: translateY(-2px); }
+
+  @media (min-width: 900px) {
+    .pt-card { grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: start; padding: 36px; }
+    .audit-card { grid-template-columns: 1.1fr 0.9fr; }
+  }
+
+  /* Info Side */
+  .pt-info { display: flex; flex-direction: column; }
+  .pt-snum { font-family: var(--font-mono); font-size: 70px; font-weight: 900; line-height: 0.8; color: var(--vital); opacity: 0.06; margin-bottom: -10px; user-select: none; }
+  .pt-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vital); margin-bottom: 12px; }
+  .pt-info h3 { font-size: clamp(22px, 2.5vw, 28px); margin-bottom: 12px; line-height: 1.2; color: var(--bone); }
+  .pt-info p { font-size: 15px; color: var(--mute); line-height: 1.6; }
+
+  /* Media Constraints */
+  .pt-media-grid { display: grid; gap: 16px; }
+  @media (min-width: 700px) {
+    .pt-media-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  }
+
+  .pt-media {
+    position: relative;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    overflow: hidden; max-height: 340px; display: flex; flex-direction: column;
+  }
+  @media (min-width: 900px) {
+    .pt-media { max-height: 440px; }
+  }
+  .doc-media { max-height: 500px; }
+  @media (min-width: 900px) {
+    .doc-media { max-height: 600px; }
+  }
+
+  .mon-bar {
+    display: flex; align-items: center; gap: 6px; padding: 10px 14px;
+    border-bottom: 1px solid var(--line); background: var(--surface-2); flex: none;
+  }
+  .mon-bar .d { width: 8px; height: 8px; border-radius: 50%; }
+  .mon-bar .d:nth-child(1) { background: var(--alert); }
+  .mon-bar .d:nth-child(2) { background: var(--gold); }
+  .mon-bar .d:nth-child(3) { background: var(--vital); }
+  .mon-bar .l { margin-left: auto; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute-2); }
+
+  .pt-shotbox {
+    position: relative; overflow: hidden; flex: 1;
+  }
+  .pt-shotbox img { width: 100%; display: block; height: auto; object-fit: cover; object-position: top; }
+  
+  /* Fade out long images smoothly */
+  .pt-shotbox::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+    background: linear-gradient(0deg, var(--surface) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* TOC specific styles for Step 5 */
+  .audit-card .sub { margin-bottom: 24px; }
+  .toc { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .toc li { display: flex; gap: 12px; align-items: flex-start; }
+  .toc .n {
+    font-family: var(--font-mono); font-size: 11px; color: var(--vital);
+    min-width: 22px; padding-top: 3px; font-weight: 600;
+  }
+  .toc .t { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--bone); }
+  .toc .hidden { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .toc .hidden li { font-size: 13px; color: var(--mute); font-weight: 500; display: block; }
+
+  /* ---- cta ---- */
+  .cta-wrap { text-align: center; margin-top: clamp(36px, 5vw, 52px); }
+
+  @media (max-width: 560px) {
+    .cta-wrap .btn { width: 100%; }
+    .shots.two { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+// blk6 · Выгоды — «Что вы получите за 90 минут».
+// Весь текст ДОСЛОВНО из «Сайт новый.html». 2 карточки + live-видео.
+import { Image } from 'astro:assets';
+import poster from '../../assets/img/img-41-a9cca289.jpg';
+---
+<section class="section" id="blk6">
+  <div class="container">
+    <div class="rv d1"><span class="badge-pill">💎 Ваши выгоды</span></div>
+    <span class="eyebrow rv d1">Что вы получите за 90 минут</span>
+    <h2 class="rv d2">Я не открою вам Америку. Вы и так знаете <span class="hl text-hl-bg">слабые места</span> своего проекта<span class="e">🎯</span></h2>
+    <p class="lead rv d3">Но за 90 минут произойдёт две вещи, которых обычно не хватает, чтобы наконец сдвинуться.</p>
+
+    <div class="gains">
+      <div class="gain hover-card rv">
+        <div class="top">
+          <div class="ic">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div><div class="num">01</div><div class="lbl">Фокус 🔦</div></div>
+        </div>
+        <h3>Направляем маркетинговый лазер на ваш проект</h3>
+        <p>90 минут, фокус только на нём: не общие советы про нишу, а разбор именно вашей ситуации и ваших цифр, трезво и со стороны.</p>
+      </div>
+
+      <div class="gain hover-card rv">
+        <div class="top">
+          <div class="ic">
+            <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div><div class="num">02</div><div class="lbl">Сдвиг восприятия 🧠</div></div>
+        </div>
+        <h3>Увидите знакомые проблемы под другим углом</h3>
+        <p>То, что давно знали, перестанет быть фоном и станет понятным списком приоритетов: что критично сейчас, а что подождёт.</p>
+      </div>
+    </div>
+
+    <div class="live hover-card rv">
+      <div class="live-frame">
+        <div class="live-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="l"><span class="rec"></span>Живая диагностика · Zoom</span>
+        </div>
+        <Image src={poster} alt="Реальная сессия обследования проекта" loading="lazy" />
+      </div>
+      <div class="live-cap">Реальная сессия обследования проекта</div>
+    </div>
+
+    <div class="closer rv">
+      <p>Чаще всего проект сдвигается с места от трезвого взгляда. За этим и приходят на обследование 🚀.</p>
+      <a href="/zayavka" class="btn pulse">
+        Получить трезвый взгляд на проект
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #blk6 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 14px; max-width: 28ch; }
+  .lead { color: var(--mute); font-size: clamp(15px, 1.8vw, 19px); line-height: 1.6; max-width: 56ch; margin-bottom: clamp(36px, 5vw, 52px); font-weight: 500; }
+
+  /* ---- gains cards ---- */
+  .gains { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: clamp(40px, 6vw, 60px); }
+  @media (min-width: 760px) { .gains { grid-template-columns: 1fr 1fr; } }
+
+  .gain {
+    padding: clamp(22px, 3vw, 28px);
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface-2);
+    transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+  .gain:hover { border-color: var(--vital-line); transform: translateY(-3px); }
+  .gain .top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .gain .ic {
+    width: 46px; height: 46px; border-radius: var(--r-sm);
+    background: var(--vital-soft); border: 1px solid var(--vital-line);
+    display: grid; place-items: center;
+  }
+  .gain .ic svg {
+    width: 22px; height: 22px; fill: none; stroke: var(--vital);
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .gain .num {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--mute-2);
+  }
+  .gain .lbl { font-weight: 700; font-size: 15px; color: var(--vital); }
+  .gain h3 { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.25; margin-bottom: 10px; }
+  .gain p { font-size: 15px; line-height: 1.6; color: var(--mute); font-weight: 500; }
+
+  /* ---- live video ---- */
+  .live { margin-bottom: clamp(36px, 5vw, 52px); }
+  .live-frame {
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    background: var(--surface);
+    max-width: 720px; margin-inline: auto;
+  }
+  .live-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px; border-bottom: 1px solid var(--line);
+    background: var(--surface-2);
+  }
+  .live-bar .d { width: 8px; height: 8px; border-radius: 50%; }
+  .live-bar .d:nth-child(1) { background: var(--alert); }
+  .live-bar .d:nth-child(2) { background: var(--gold); }
+  .live-bar .d:nth-child(3) { background: var(--vital); }
+  .live-bar .l {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mute-2);
+  }
+  .rec {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--alert);
+    animation: blink 1.8s infinite;
+  }
+  .live-frame :global(img) { width: 100%; display: block; height: auto; }
+  .live-cap {
+    text-align: center; margin-top: 14px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mute-2);
+  }
+
+  /* ---- closer ---- */
+  .closer {
+    max-width: 660px; margin: 0 auto;
+    text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(18px, 2.5vw, 24px);
+  }
+  .closer p { font-size: clamp(17px, 2.2vw, 21px); line-height: 1.5; color: var(--bone); font-weight: 500; }
+
+  @media (max-width: 560px) {
+    .closer .btn { width: 100%; }
+  }
+</style>

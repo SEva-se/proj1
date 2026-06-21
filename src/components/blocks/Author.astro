@@ -1,0 +1,153 @@
+---
+// blk8 · Кто проводит диагностику — автор (Рустам Михайлов).
+// Весь текст ДОСЛОВНО из «Сайт новый.html».
+import { Image } from 'astro:assets';
+import photo from '../../assets/img/img-34-0f3731f1.jpg';
+
+const facts = [
+  { text: 'В сфере онлайн-образования <b>7 лет</b>', icon: 'M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83' },
+  { text: 'Владелец продюсерского центра, <b>3 проекта</b> в портфеле · годовая выручка <b>$700 000</b>', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+  { text: 'Ментор крупных блогеров и онлайн-школ', icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75' },
+  { text: 'Вывел <b>50+ экспертов</b> и онлайн-школ на доход от <b>$100 000 в год</b> по технологии «запуск каждый день на автопилоте»', icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8' },
+  { text: 'Продиагностировал <b>100+ проектов</b>', icon: 'M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3' },
+];
+
+// Декоративные мини-иконки (мед-тема, коллаж вокруг фото)
+const miniIcons = [
+  'M3 12h4l2-5 3 11 2-7 1.5 3H21', // пульс
+  'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z', // сердце
+  'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', // щит
+  'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', // badge
+  'M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2', // часы
+  'M4 7l5 5 4-4 7 7', // тренд
+  'M22 12h-4l-3 9L9 3l-3 9H2', // экг
+  'M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2 2-2 2M18 13l2 2-2 2M15 7l4 4', // искры
+  'M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z', // документ
+  'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', // слои
+  'M12 3a9 9 0 100 18 9 9 0 000-18zM12 8v4l3 2', // часы 2
+  'M5 21V10M12 21V4M19 21v-7', // барчарт
+];
+---
+<section class="section" id="blk8">
+  <div class="container">
+    <span class="eyebrow rv">Кто проводит диагностику</span>
+
+    <div class="author">
+      <!-- photo stage -->
+      <div class="stage rv">
+        <div class="collage">
+          {miniIcons.map((d) => (
+            <div class="ph-mini">
+              <svg viewBox="0 0 24 24"><path d={d} /></svg>
+            </div>
+          ))}
+        </div>
+        <div class="main-photo">
+          <span class="corner c1"></span><span class="corner c2"></span>
+          <span class="corner c3"></span><span class="corner c4"></span>
+          <Image class="photo" src={photo} alt="Рустам Михайлов" loading="lazy" />
+          <div class="nameplate">
+            <span class="nm">Рустам Михайлов</span>
+            <span class="ro">Маркетинг-хирург</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- info -->
+      <div class="rv d1">
+        <h2 class="role rv d2">Ваш <span class="hl text-hl-bg">маркетинг-хирург</span><span class="e">👨‍⚕️</span></h2>
+        <a class="iglink" href="https://www.instagram.com/mihaylov.rustam" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @mihaylov.rustam
+        </a>
+        <ul class="facts">
+          {facts.map((f) => (
+            <li>
+              <span class="mk">
+                <svg viewBox="0 0 24 24"><path d={f.icon} /></svg>
+              </span>
+              <span set:html={f.text} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #blk8 { position: relative; }
+  .author {
+    display: grid; grid-template-columns: 1fr; gap: clamp(32px, 5vw, 52px);
+    align-items: center; margin-top: clamp(24px, 3vw, 36px);
+  }
+  @media (min-width: 760px) { .author { grid-template-columns: 0.9fr 1.1fr; } }
+
+  /* ---- photo stage ---- */
+  .stage { position: relative; display: flex; justify-content: center; }
+  .collage {
+    position: absolute; inset: 0;
+    display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);
+    gap: 8px; opacity: 0.12; pointer-events: none;
+  }
+  .ph-mini {
+    display: grid; place-items: center;
+    border-radius: 6px; background: var(--surface-2); border: 1px solid var(--line);
+  }
+  .ph-mini svg {
+    width: 18px; height: 18px; fill: none; stroke: var(--mute-2);
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  .main-photo {
+    position: relative; z-index: 2; width: 72%; max-width: 320px;
+  }
+  .main-photo :global(.photo) { width: 100%; height: auto; object-fit: cover; border-radius: 8px; display: block; }
+
+  /* corner brackets */
+  .corner {
+    position: absolute; width: 24px; height: 24px;
+    border-color: var(--vital); border-style: solid; z-index: 3;
+  }
+  .c1 { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
+  .c2 { top: -6px; right: -6px; border-width: 2px 2px 0 0; }
+  .c3 { bottom: -6px; left: -6px; border-width: 0 0 2px 2px; }
+  .c4 { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
+
+  .nameplate {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    background: rgba(8,9,11,0.82); backdrop-filter: blur(8px);
+    border: 1px solid var(--line); border-radius: 6px;
+    padding: 10px 20px; white-space: nowrap;
+  }
+  .nm { font-weight: 700; font-size: 15px; color: var(--bone); }
+  .ro { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vital); }
+
+  /* ---- info ---- */
+  .role { font-size: clamp(26px, 4vw, 42px); line-height: 1.15; margin-bottom: 14px; }
+  .iglink {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--vital); font-weight: 600;
+    margin-bottom: clamp(20px, 3vw, 28px);
+    transition: opacity 0.3s;
+  }
+  .iglink:hover { opacity: 0.8; }
+  .iglink svg {
+    width: 18px; height: 18px; fill: none; stroke: var(--vital);
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  .facts { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .facts li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; font-weight: 500; color: var(--bone); }
+  .facts li :global(b) { font-weight: 700; color: var(--vital); }
+  .mk {
+    width: 36px; height: 36px; flex: none; border-radius: var(--r-sm);
+    background: var(--vital-soft); border: 1px solid var(--vital-line);
+    display: grid; place-items: center;
+  }
+  .mk svg {
+    width: 18px; height: 18px; fill: none; stroke: var(--vital);
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+</style>

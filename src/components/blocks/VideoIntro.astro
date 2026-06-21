@@ -1,0 +1,116 @@
+---
+// blk2 · ВИДЕО-ЗНАКОМСТВО. Монитор с видео и парящие чипы — перенесены из Hero (blk1).
+// Заголовок и подпись — копирайт от владельца проекта (не из «Сайт новый.html»).
+---
+<section class="vintro section">
+  <div class="container vintro-grid">
+    <div class="vintro-head">
+      <h2 class="rv d2">ЗАГЛЯНИТЕ ВНУТРЬ <span class="hl text-hl-bg">ОБСЛЕДОВАНИЯ</span><span class="e">🎥</span></h2>
+      <p class="rv d1">Посмотрите короткое видео на 2 минуты, где я покажу, как проходит диагностика изнутри, что именно мы разбираем и какой результат вы получите на выходе.</p>
+    </div>
+
+    <div class="vintro-vis rv d2">
+      <span class="bracket b1"></span><span class="bracket b2"></span>
+      <span class="bracket b3"></span><span class="bracket b4"></span>
+
+      <div class="monitor">
+        <div class="monitor-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="lbl">ОБСЛЕДОВАНИЕ ПРОЕКТА</span>
+        </div>
+
+        <div class="video-slot">
+          <iframe
+            src="https://www.loom.com/embed/cf3ccf5218ed412eb217437facbf52ff?hide_owner=true&hide_share=true&hideEmbedTopBar=true"
+            title="ВИДЕО · ЗНАКОМСТВО И О ДИАГНОСТИКЕ"
+            frameborder="0"
+            loading="lazy"
+            allow="fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="ecg-strip">
+          <span class="bpm">ПУЛЬС ПРОЕКТА</span>
+          <svg class="ecg-svg" viewBox="0 0 600 22" preserveAspectRatio="none">
+            <path class="ecg-path" d="M0 11 H120 l8 -8 l6 16 l7 -20 l6 12 H300 l8 -8 l6 16 l7 -20 l6 12 H600" />
+          </svg>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .vintro-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 5vw, 60px);
+  }
+
+  .vintro-head { max-width: 640px; margin-inline: auto; text-align: center; }
+  .vintro-head h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .vintro-head p {
+    margin-top: 18px;
+    color: var(--mute);
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* ---- монитор в угловых скобках ---- */
+  .vintro-vis { position: relative; max-width: 560px; margin: 0 auto; padding: 14px; width: 100%; }
+
+  @media (min-width: 992px) {
+    .vintro-grid { flex-direction: row; align-items: center; justify-content: space-between; }
+    .vintro-head { text-align: left; margin: 0; flex: 0 1 48%; }
+    .vintro-vis { margin: 0; flex: 0 1 48%; }
+  }
+
+  .bracket { position: absolute; width: 22px; height: 22px; border: 2px solid var(--vital); opacity: 0.8; }
+  .bracket.b1 { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+  .bracket.b2 { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+  .bracket.b3 { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+  .bracket.b4 { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+  .monitor {
+    position: relative; z-index: 2;
+    border-radius: 8px; overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid rgba(236, 234, 228, 0.14);
+  }
+  .monitor-bar { display: flex; align-items: center; gap: 8px; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+  .monitor-bar .d { width: 9px; height: 9px; border-radius: 50%; }
+  .monitor-bar .d:nth-child(1) { background: var(--alert); }
+  .monitor-bar .d:nth-child(2) { background: var(--gold); }
+  .monitor-bar .d:nth-child(3) { background: var(--vital); }
+  .monitor-bar .lbl { margin-left: auto; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--mute); }
+
+  .video-slot {
+    position: relative; aspect-ratio: 5 / 4;
+    background: #000;
+  }
+  .video-slot iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; border: 0; display: block;
+  }
+
+  .ecg-strip { display: flex; align-items: center; gap: 14px; height: 52px; padding: 0 16px; border-top: 1px solid var(--line); }
+  .ecg-strip .bpm { font-family: var(--font-mono); font-size: 10px; color: var(--vital); letter-spacing: 0.16em; white-space: nowrap; }
+  .ecg-svg { width: 100%; height: 22px; }
+  .ecg-path {
+    fill: none; stroke: var(--vital); stroke-width: 1.6;
+    stroke-dasharray: 1500; stroke-dashoffset: 1500;
+    animation: draw 7s linear infinite;
+    filter: drop-shadow(0 0 4px var(--vital-line));
+  }
+
+
+</style>

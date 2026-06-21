@@ -1,0 +1,107 @@
+---
+// blk9 · Отзывы пациентов — 6 карточек с фото + цитатами.
+// Весь текст ДОСЛОВНО из «Сайт новый.html». <span class="mark"> = выделенные фрагменты.
+import { Image } from 'astro:assets';
+import img35 from '../../assets/img/img-35-c419a566.jpg';
+import img36 from '../../assets/img/img-36-1844d9c0.jpg';
+import img37 from '../../assets/img/img-37-acedd578.jpg';
+import img38 from '../../assets/img/img-38-dcccd991.jpg';
+import img39 from '../../assets/img/img-39-c293e266.jpg';
+import img40 from '../../assets/img/img-40-09a51a2b.jpg';
+
+const reviews = [
+  {
+    src: img35, niche: 'Ниша: Терапевт, эндокринолог', alt: 'Профиль · Терапевт, эндокринолог',
+    quote: 'Я врач, поэтому всегда был больше в пациентах, чем в маркетинге. А тут понял, что надо расти, и просто не знал, с чего взяться. <span class="mark">На диагностике впервые увидел свой проект целиком, а не кусками. Самое ценное стало понятно, за что хвататься в первую очередь, а что подождёт</span>. Ушёл с готовой стратегией в голове, без этой каши, что была раньше.',
+  },
+  {
+    src: img36, niche: 'Ниша: Нутрициология', alt: 'Профиль · Нутрициология',
+    quote: 'Раньше клиенты приходили в основном по рекомендациям. Думала, что у меня всё более-менее нормально, пока на диагностике не увидела, сколько возможностей просто лежит без внимания. <span class="mark">Больше всего понравилось, что мы не говорили общими фразами, а собрали конкретную воронку под мой проект и расписали следующие шаги.</span> После встречи наконец появилось понимание, как привлекать клиентов не только через сарафан.',
+  },
+  {
+    src: img37, niche: 'Ниша: E-commerce', alt: 'Профиль · E-commerce',
+    quote: 'За 15 лет в бизнесе я привык многие решения принимать на опыте и интуиции. <span class="mark">На диагностике неожиданно для себя увидел, сколько хаоса накопилось в маркетинге и позиционировании.</span> Мы разобрали мою экспертность, нашли сильные стороны и буквально собрали вокруг них всю логику воронки. После этого многие вещи наконец встали на свои места.',
+  },
+  {
+    src: img38, niche: 'Ниша: Обучение психосоматике', alt: 'Профиль · Обучение психосоматике',
+    quote: 'Я пришёл на диагностику с мыслью, что воронка у меня в целом нормальная. <span class="mark">Но в итоге мы нашли слабое место в самой продаже и вместо звонков внедрили диагностическую карту, и уже после этого конверсия выросла в два раза</span>. Внедрение этого решения дало очень сильный буст.',
+  },
+  {
+    src: img39, niche: 'Ниша: Обучение нейросетям', alt: 'Профиль · Обучение нейросетям',
+    quote: 'Я пришла на диагностику уже со своим видением запуска и думала, что мне просто подскажут пару моментов. Но оказалось, что в моей схеме были слабые места, которые я вообще не замечала. <span class="mark">Мы прямо на диагностике пересобрали всю модель, простроили воронку и разложили запуск по шагам.</span> После встречи у меня появилось ощущение, что я наконец понимаю, куда и зачем иду, а не просто надеюсь, что всё сработает.',
+  },
+  {
+    src: img40, niche: 'Ниша: Обучение макияжу', alt: 'Профиль · Обучение макияжу',
+    quote: 'Диагностика с Рустамом для меня была как хороший отрезвляющий душ. Я думала, что проблема в отдельных мелочах, а оказалось, что в проекте накопился полный хаос. <span class="mark">Мы разобрали всё по полочкам: продукт, оффер, трафик, воронку, и в итоге я вышла со встречи с готовым планом действий.</span> Самое интересное, что многими решениями из той стратегии я пользуюсь до сих пор.',
+  },
+];
+---
+<section class="section" id="blk9">
+  <div class="container">
+    <div class="head rv">
+      <span class="eyebrow">Отзывы пациентов</span>
+      <h2 class="rv d2">Что говорят пациенты, которые <span class="hl text-hl-bg">прошли обследование</span><span class="e">💬</span></h2>
+    </div>
+    <div class="board">
+      {reviews.map((r) => (
+        <div class="tcard rv">
+          <div class="shot">
+            <Image src={r.src} alt={r.alt} loading="lazy" />
+          </div>
+          <span class="niche">{r.niche}</span>
+          <p class="quote"><span class="q">“</span><Fragment set:html={r.quote} /></p>
+        </div>
+      ))}
+    </div>
+    <div class="cta-wrap rv">
+      <a href="/zayavka" class="btn">
+        Записаться на обследование
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: clamp(36px, 5vw, 52px); }
+  #blk9 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin-top: 18px; max-width: 24ch; }
+
+  .board {
+    display: grid; grid-template-columns: 1fr; gap: 18px;
+  }
+  @media (min-width: 760px) { .board { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .board { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .tcard {
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    background: var(--surface-2); padding: 0;
+    display: flex; flex-direction: column;
+    transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+  .tcard:hover { border-color: var(--vital-line); transform: translateY(-3px); }
+
+  .shot { overflow: hidden; }
+  .shot :global(img) { width: 100%; display: block; height: auto; }
+
+  .niche {
+    display: block; padding: 14px 18px 0;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--vital); font-weight: 600;
+  }
+
+  .quote {
+    padding: 10px 18px 20px; font-size: 14px; line-height: 1.6;
+    color: var(--mute); font-weight: 500; flex: 1;
+  }
+  .q { display: inline-block; font-family: var(--font-hand); font-size: 34px; color: var(--vital); line-height: 0; vertical-align: -10px; margin-right: 8px; }
+  .quote :global(.mark) {
+    color: var(--bone); font-weight: 600;
+    background: linear-gradient(transparent 60%, var(--vital-soft) 60%);
+  }
+
+  .cta-wrap { text-align: center; margin-top: clamp(36px, 5vw, 52px); }
+
+  @media (max-width: 560px) {
+    .cta-wrap .btn { width: 100%; }
+  }
+</style>

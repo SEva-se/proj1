@@ -1,0 +1,107 @@
+---
+// blk7 · Почему это бесплатно — derisk-секция + бегущая лента скриншотов.
+// Весь текст ДОСЛОВНО из «Сайт новый.html».
+import { Image } from 'astro:assets';
+import img18 from '../../assets/img/img-18-30b8556b.jpg';
+import img19 from '../../assets/img/img-19-94fea308.jpg';
+import img20 from '../../assets/img/img-20-a3b928a4.jpg';
+import img21 from '../../assets/img/img-21-6527325a.jpg';
+import img22 from '../../assets/img/img-22-f8303d4e.jpg';
+import img23 from '../../assets/img/img-23-973e4c09.jpg';
+import img24 from '../../assets/img/img-24-a37d3747.jpg';
+import img25 from '../../assets/img/img-25-bae0b70e.jpg';
+
+const ribbonImages = [img18, img19, img20, img21, img22, img23, img24, img25];
+---
+<section class="section" id="blk7">
+  <div class="container">
+    <span class="eyebrow rv">Почему это бесплатно</span>
+    <h2 class="rv d2">Зачем мне проводить диагностику <span class="hl text-hl-bg">бесплатно</span><span class="e">🤝</span></h2>
+
+    <div class="body">
+      <p class="rv d1">Диагностику я запускаю не постоянно. И когда запускаю, провожу её лично, сам.</p>
+      <p class="rv d1">Так я отбираю лучших и самых сильных экспертов к себе в воронку, тех, с кем потенциально интересно работать дальше, плотно и вдолгую.</p>
+    </div>
+  </div>
+
+  <div class="ribbon">
+    <div class="track">
+      {ribbonImages.map((src) => (
+        <Image src={src} alt="" loading="lazy" />
+      ))}
+      {ribbonImages.map((src) => (
+        <Image src={src} alt="" loading="lazy" />
+      ))}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="derisk rv d2">
+      <div class="ic">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <p><b>Никаких обязательств.</b> После диагностики вы ничего не должны покупать, забираете диагноз, план и аудит и уходите.</p>
+    </div>
+
+    <div class="cta-wrap rv d2">
+      <a href="/zayavka" class="btn">
+        Занять место на диагностику
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #blk7 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 clamp(20px, 3vw, 28px); max-width: 22ch; }
+
+  .body { max-width: 660px; margin-bottom: clamp(36px, 5vw, 52px); }
+  .body p { font-size: clamp(15px, 1.8vw, 18px); line-height: 1.65; color: var(--mute); font-weight: 500; }
+  .body p + p { margin-top: 14px; }
+
+  /* ---- бегущая лента скриншотов ---- */
+  .ribbon {
+    overflow: hidden; width: 100%;
+    margin-bottom: clamp(36px, 5vw, 52px);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .track {
+    display: flex; gap: 14px;
+    width: max-content;
+    animation: scrollx 40s linear infinite;
+  }
+  .ribbon:hover .track { animation-play-state: paused; }
+  .track :global(img) {
+    height: clamp(120px, 16vw, 200px); width: auto; border-radius: 6px;
+    border: 1px solid var(--line);
+    flex: none;
+  }
+
+  /* ---- derisk block ---- */
+  .derisk {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid var(--vital-line); border-radius: 8px;
+    background: var(--vital-soft);
+    max-width: 660px;
+  }
+  .derisk .ic {
+    width: 42px; height: 42px; flex: none; border-radius: var(--r-sm);
+    background: rgba(63,221,154,0.15); border: 1px solid var(--vital-line);
+    display: grid; place-items: center;
+  }
+  .derisk .ic svg {
+    width: 20px; height: 20px; fill: none; stroke: var(--vital);
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .derisk p { font-size: 15px; line-height: 1.6; color: var(--bone); font-weight: 500; }
+  .derisk b { font-weight: 700; }
+
+  /* ---- cta ---- */
+  .cta-wrap { margin-top: clamp(28px, 4vw, 40px); }
+
+  @media (max-width: 560px) {
+    .cta-wrap .btn { width: 100%; }
+  }
+</style>

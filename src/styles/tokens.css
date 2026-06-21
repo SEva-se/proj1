@@ -1,0 +1,50 @@
+/* tokens.css — единственный источник дизайн-токенов INFO CLINIC.
+   Палитра 1:1 из исходника, менять нельзя (см. DESIGN.md §2). */
+:root {
+  /* поверхности */
+  --ink: #08090b;
+  --surface: #0d0f13;
+  --surface-2: #13161c;
+  --card: #15181e;
+
+  /* текст */
+  --bone: #ECEAE4;
+  --mute: #8B9099;
+  --mute-2: #5A6068;
+
+  /* сигнальный зелёный — «жизненные показатели» / CTA */
+  --vital: #3FDD9A;
+  --vital-soft: rgba(63, 221, 154, 0.09);
+  --vital-line: rgba(63, 221, 154, 0.32);
+
+  /* предупреждения / премиум-метки */
+  --gold: #C9A24B;
+  --gold-soft: rgba(201, 162, 75, 0.10);
+  --gold-line: rgba(201, 162, 75, 0.32);
+  --amber: #D7944C;
+  --amber-soft: rgba(215, 148, 76, 0.08);
+  --amber-line: rgba(215, 148, 76, 0.28);
+
+  /* ошибка (красная точка монитора) */
+  --alert: #E0644A;
+
+  /* линии */
+  --line: rgba(236, 234, 228, 0.09);
+  --line-2: rgba(236, 234, 228, 0.055);
+
+  /* типографика */
+  --font-sans: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-hand: 'Caveat Variable', 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* геометрия / тайминги */
+  --r: 18px;
+  --r-sm: 12px;
+  --maxw: 1180px;
+  --pad: 28px;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@media (max-width: 560px) {
+  :root { --pad: 20px; }
+}

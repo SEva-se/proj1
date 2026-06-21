@@ -1,0 +1,132 @@
+---
+// blk10 · Кому подходит обследование, а кому точно нет.
+// Весь текст ДОСЛОВНО из «Сайт новый.html».
+
+const fits = [
+  'Экспертам, консультантам, наставникам и онлайн-школам, которые понимают, что рынок изменился и старые инструменты уже не дают прежнего результата.',
+  'Тем, кто хочет увидеть проект целиком и разобраться, где именно находятся точки роста.',
+  'Тем, кто готов принимать решения на основе фактов и диагностики, а не бесконечно тестировать всё подряд.',
+  'Тем, кто ищет не очередную мотивацию, а понятный план действий.',
+  'Тем, кто готов внедрять изменения, если увидит, что они действительно необходимы.',
+];
+
+const nots = [
+  'Тем, кто ищет волшебную кнопку или быстрый способ решить все проблемы за один день.',
+  'Тем, кто считает, что причина всегда находится во внешних обстоятельствах: рынке, алгоритмах или подрядчиках.',
+  'Тем, кто хочет переложить ответственность за результат на консультанта.',
+  'Тем, кто не готов ничего менять в проекте, даже если диагностика покажет слабые места.',
+  'Тем, кто ищет подтверждение своей правоты, а не реальные точки роста.',
+];
+---
+<section class="section" id="blk10">
+  <div class="container">
+    <div class="head rv">
+      <h2 class="rv d2">Кому подходит обследование, а кому <span class="hl text-hl-bg">точно нет</span><span class="e">✅</span></h2>
+    </div>
+
+    <div class="cols">
+      <div class="panel fit rv">
+        <div class="ptitle">
+          <span class="bdg yes">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </span>
+          Кому подходит обследование проекта
+        </div>
+        <ul>
+          {fits.map((f) => (
+            <li>
+              <span class="mk yes">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="panel no rv d1">
+        <div class="ptitle">
+          <span class="bdg no">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </span>
+          Кому не подходит обследование
+        </div>
+        <ul>
+          {nots.map((n) => (
+            <li>
+              <span class="mk no">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+              <span>{n}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-wrap rv">
+      <a href="/zayavka" class="btn">
+        Мне подходит
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #blk10 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; max-width: 24ch; }
+  .head { margin-bottom: clamp(32px, 5vw, 48px); }
+
+  .cols { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
+
+  .panel {
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    background: var(--surface-2); padding: 0;
+  }
+  .panel.fit { border-color: var(--vital-line); }
+  .panel.no { border-color: var(--line); }
+
+  .ptitle {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px; font-weight: 700; font-size: 15px;
+    border-bottom: 1px solid var(--line);
+  }
+  .panel.fit .ptitle { background: var(--vital-soft); color: var(--bone); }
+  .panel.no .ptitle { background: var(--surface); color: var(--bone); }
+
+  .bdg {
+    width: 34px; height: 34px; flex: none; border-radius: 8px;
+    display: grid; place-items: center;
+  }
+  .bdg.yes { background: var(--vital-soft); border: 1px solid var(--vital-line); }
+  .bdg.no { background: rgba(224,100,74,0.08); border: 1px solid rgba(224,100,74,0.28); }
+  .bdg svg {
+    width: 18px; height: 18px; fill: none; stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .bdg.yes svg { stroke: var(--vital); }
+  .bdg.no svg { stroke: var(--alert); }
+
+  .panel ul { list-style: none; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+  .panel li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; font-weight: 500; color: var(--bone); }
+
+  .mk {
+    width: 28px; height: 28px; flex: none; border-radius: 6px;
+    display: grid; place-items: center; margin-top: 1px;
+  }
+  .mk.yes { background: var(--vital-soft); }
+  .mk.no { background: rgba(224,100,74,0.08); }
+  .mk svg {
+    width: 14px; height: 14px; fill: none; stroke-width: 2.4;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .mk.yes svg { stroke: var(--vital); }
+  .mk.no svg { stroke: var(--alert); }
+
+  .cta-wrap { text-align: center; margin-top: clamp(36px, 5vw, 52px); }
+
+  @media (max-width: 560px) {
+    .cta-wrap .btn { width: 100%; }
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+// blk12 · Финальный CTA + Футер.
+// Весь текст ДОСЛОВНО из «Сайт новый.html».
+---
+<section class="final" id="blk12">
+  <div class="container">
+    <div class="file rv">
+      <div class="file-top">
+        <span class="brand">
+          <svg viewBox="0 0 24 24" class="brand-icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          INFO CLINIC
+        </span>
+      </div>
+
+      <div class="file-body">
+        <div class="rv d1"><span class="badge-pill gold">⚡ Решение за вами</span></div>
+        <h2 class="rv d2">Пора поставить <span class="hl text-hl-bg">точный диагноз</span><span class="e">🩺</span></h2>
+        <p class="sub rv d3">Оформите карточку пациента и выберите удобное время для диагностики.</p>
+
+        <a href="/zayavka" class="btn lg pulse rv d3">
+          Оформить карточку пациента
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <div class="signrow">
+          <span class="sign">INFO CLINIC · ЧАСТНАЯ ДИАГНОСТИКА</span>
+          <span class="sign">★★★★★ 5.0 · 100+ обследований</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final {
+    padding: clamp(64px, 9vw, 128px) 0 clamp(48px, 7vw, 80px);
+    position: relative;
+  }
+
+  .file {
+    max-width: 640px; margin-inline: auto;
+    border: 1px solid var(--line); border-radius: 8px;
+    overflow: hidden; background: var(--surface-2);
+  }
+
+  .file-top {
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--bone); font-weight: 700;
+  }
+  .brand-icon {
+    width: 20px; height: 20px; fill: none; stroke: var(--vital);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  .file-body {
+    padding: clamp(32px, 5vw, 52px) clamp(24px, 4vw, 40px);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .file-body h2 {
+    font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin-bottom: 14px;
+  }
+  .sub {
+    color: var(--mute); font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.6; font-weight: 500; margin-bottom: clamp(24px, 4vw, 36px);
+    max-width: 36ch;
+  }
+
+  .file-body .btn.lg { border-radius: 6px; margin-bottom: clamp(28px, 4vw, 40px); }
+
+  .signrow {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding-top: clamp(20px, 3vw, 28px);
+    border-top: 1px solid var(--line);
+    width: 100%;
+  }
+  .sign {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--mute-2);
+  }
+  .sign:last-child { color: var(--gold); }
+
+  @media (max-width: 560px) {
+    .file-body .btn.lg { width: 100%; }
+  }
+</style>
