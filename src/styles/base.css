@@ -159,7 +159,6 @@ h1, h2, h3 {
   color: var(--vital); border-radius: 20px; padding: 4px 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   margin-bottom: 12px;
-  animation: float 6s ease-in-out infinite;
 }
 .badge-pill.gold { color: var(--gold); border-color: var(--gold-line); }
 
