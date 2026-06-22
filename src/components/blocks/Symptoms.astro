@@ -49,28 +49,27 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
                     <span class="status"><span class="d"></span>Требует диагностики</span>
                   </div>
                   <div class="pc-body">
-                    <div class="sympt">
-                      <span class="av">
-                        <svg viewBox="0 0 24 24"><path d={icons[n]} /></svg>
-                      </span>
-                      <div class="fld sym">
-                        <div class="lbl">Симптом 🤒</div>
-                        <p>{c.sym}</p>
-                      </div>
+                    <div class="step-block sym-block">
+                      <div class="step-lbl"><span class="num">1</span> Симптом 🤒</div>
+                      <p class="step-txt">{c.sym}</p>
                     </div>
-                    <div class="fld think">
-                      <div class="lbl">Что обычно думают 💭</div>
-                      <p>{c.think}</p>
+                    
+                    <div class="step-arrow">
+                      <svg viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
                     </div>
-                    <div class="dx">
-                      <div class="dx-arrow">
-                        <svg viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
-                      </div>
-                      <div class="lbl">
-                        <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                        Что часто оказывается на практике 💡
-                      </div>
-                      <p>{c.dx}</p>
+
+                    <div class="step-block think-block">
+                      <div class="step-lbl"><span class="num">2</span> Что обычно думают 💭</div>
+                      <p class="step-txt">«{c.think}»</p>
+                    </div>
+
+                    <div class="step-arrow">
+                      <svg viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+                    </div>
+
+                    <div class="step-block dx-block">
+                      <div class="step-lbl"><span class="num">3</span> Что часто оказывается на практике 💡</div>
+                      <p class="step-txt">{c.dx}</p>
                     </div>
                   </div>
                 </article>
@@ -130,8 +129,12 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
   }
 
   @media (max-width: 899px) {
-    .sym-stack { display: flex; flex-direction: column; gap: 16px; perspective: none; }
-    .sym-card { grid-area: auto; transform: none !important; opacity: 1 !important; z-index: auto !important; }
+    .sym-stack { display: flex; flex-direction: column; gap: 48px; perspective: none; }
+    .sym-card { grid-area: auto; transform: none !important; opacity: 1 !important; z-index: auto !important; position: relative; }
+    .sym-card:not(:last-child)::after {
+      content: ""; position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
+      width: 48px; height: 3px; background: var(--vital-line); border-radius: 3px;
+    }
   }
 
   .pc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
@@ -139,59 +142,40 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
   .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--bone); text-transform: uppercase; white-space: nowrap; font-weight: 700; }
   .status .d { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-line); }
 
-  .pc-body { padding: 20px 18px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
-  .sympt { display: flex; align-items: flex-start; gap: 14px; }
-  .av {
-    width: 44px; height: 44px; flex: none; border-radius: 8px;
-    display: grid; place-items: center;
-    background: var(--vital-soft); border: 1px solid var(--vital-line);
-  }
-  .av svg { width: 22px; height: 22px; fill: none; stroke: var(--vital); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-  .fld .lbl { 
-    display: inline-block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; 
-    text-transform: uppercase; color: var(--bone); font-weight: 700; 
-    margin-bottom: 8px; padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.05); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .fld.sym p { font-size: clamp(16px, 2.1vw, 19px); font-weight: 700; line-height: 1.35; color: var(--bone); text-transform: uppercase; }
+  .pc-body { padding: 18px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
   
-  .fld.think {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px dashed var(--line);
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin: 2px 0;
+  .step-block {
+    border: 1px solid var(--line); border-radius: 10px; padding: 16px;
+    background: var(--surface); display: flex; flex-direction: column; gap: 10px;
   }
-  .fld.think .lbl { color: var(--gold); background: rgba(230, 185, 128, 0.1); border-color: rgba(230, 185, 128, 0.2); margin-bottom: 10px; }
-  .fld.think p { 
-    font-size: 18px; font-weight: 500; font-style: italic; line-height: 1.4; color: var(--bone); 
+  .step-lbl {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mute-2);
   }
-  .fld.think p::before { content: "«"; color: rgba(255,255,255,0.2); margin-right: 4px; }
-  .fld.think p::after { content: "»"; color: rgba(255,255,255,0.2); margin-left: 4px; }
+  .step-lbl .num {
+    display: grid; place-items: center; width: 20px; height: 20px;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 4px;
+    color: var(--bone); font-size: 11px;
+  }
+  .step-txt { font-size: 16px; font-weight: 500; line-height: 1.45; color: var(--bone); margin: 0; }
 
-  .dx {
-    margin: auto -18px -20px; padding: 20px 18px 20px;
-    background: var(--vital-soft); border-top: 1px solid var(--vital-line);
-    position: relative;
-  }
-  .dx-arrow {
-    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-    width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2);
-    border: 1px solid var(--vital-line); display: grid; place-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-  .dx-arrow svg { width: 16px; height: 16px; fill: none; stroke: var(--vital); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-  .dx::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--vital); }
-  .dx .lbl { 
-    display: inline-flex; align-items: center; gap: 8px; 
-    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; 
-    text-transform: uppercase; color: var(--vital); font-weight: 700; 
-    margin-bottom: 10px; padding: 5px 10px;
-    background: rgba(63, 221, 154, 0.1); border-radius: 6px; border: 1px solid rgba(63, 221, 154, 0.2);
-  }
-  .dx .lbl svg { width: 16px; height: 16px; fill: none; stroke: var(--vital); stroke-width: 2.6; }
-  .dx p { font-size: 15px; font-weight: 700; line-height: 1.5; color: var(--bone); }
+  .sym-block { border-color: rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02); }
+  .sym-block .step-lbl { color: var(--bone); }
+  .sym-block .step-lbl .num { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+  .sym-block .step-txt { font-size: 17px; font-weight: 700; }
+
+  .think-block { border-color: rgba(201, 162, 75, 0.2); background: rgba(201, 162, 75, 0.04); }
+  .think-block .step-lbl { color: var(--gold); }
+  .think-block .step-lbl .num { background: rgba(201, 162, 75, 0.15); border-color: rgba(201, 162, 75, 0.3); color: var(--gold); }
+  .think-block .step-txt { font-style: italic; opacity: 0.9; }
+
+  .dx-block { border-color: var(--vital-line); background: var(--vital-soft); }
+  .dx-block .step-lbl { color: var(--vital); }
+  .dx-block .step-lbl .num { background: rgba(63, 221, 154, 0.15); border-color: rgba(63, 221, 154, 0.3); color: var(--vital); }
+
+  .step-arrow { display: flex; justify-content: center; margin: 0; }
+  .step-arrow svg { width: 18px; height: 18px; fill: none; stroke: var(--line); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
   .closer {
     max-width: 660px; margin: clamp(44px, 6vw, 72px) auto 0;
@@ -203,11 +187,9 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
 
   @media (max-width: 560px) {
     .closer .btn.lg { width: 100%; }
-    .dx { margin: 4px -16px -16px; padding: 14px 16px 16px; }
     .pc-head { padding: 12px 16px; }
-    .pc-body { padding: 16px 16px; gap: 12px; }
-    .av { width: 36px; height: 36px; }
-    .av svg { width: 18px; height: 18px; }
+    .pc-body { padding: 12px; gap: 6px; }
+    .step-block { padding: 14px; }
   }
 </style>
 
