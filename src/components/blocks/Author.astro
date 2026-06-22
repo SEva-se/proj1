@@ -55,7 +55,7 @@ const miniIcons = [
 
       <!-- info -->
       <div class="rv d1">
-        <h2 class="role rv d2">Ваш <span class="hl text-hl-bg">маркетинг-хирург</span><span class="e">👨‍⚕️</span></h2>
+        <h2 class="role rv d2">Ваш <span class="hl">маркетинг-хирург</span><span class="e">👨‍⚕️</span></h2>
         <a class="iglink" href="https://www.instagram.com/mihaylov.rustam" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           @mihaylov.rustam
@@ -149,5 +149,12 @@ const miniIcons = [
   .mk svg {
     width: 18px; height: 18px; fill: none; stroke: var(--vital);
     stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  @media (max-width: 560px) {
+    .nameplate { padding: 8px 12px; }
+    .nm { font-size: 13px; }
+    .ro { font-size: 8px; }
+    .facts li { font-size: 14px; }
   }
 </style>

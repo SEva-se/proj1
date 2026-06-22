@@ -51,10 +51,10 @@ const steps = [
 ---
 <section class="section" id="blk5">
   <div class="container">
-    <div class="rv d1"><span class="badge-pill">⚙️ Технология обследования</span></div>
+
     <span class="eyebrow rv d1">Методология диагностики</span>
     <div class="title-wrap rv d2">
-      <h2>По какой технологии мы <span class="hl text-hl-bg">обследуем</span> ваш проект</h2>
+      <h2>По какой технологии мы <span class="hl">обследуем</span> ваш проект</h2>
       <div class="title-emoji">🔬</div>
     </div>
     <p class="lead rv d3">Каждый проект проходит через маркетинговый сканер. Ниже реальные экраны с диагностической сессии.</p>
@@ -132,7 +132,7 @@ const steps = [
 
 <style>
   #blk5 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 14px; max-width: 20ch; }
-  .lead { color: var(--mute); font-size: clamp(15px, 1.8vw, 19px); line-height: 1.6; max-width: 56ch; margin-bottom: clamp(40px, 6vw, 64px); font-weight: 500; }
+  .lead { color: var(--bone); font-size: clamp(17px, 2vw, 21px); line-height: 1.6; max-width: 60ch; margin-bottom: clamp(40px, 6vw, 64px); font-weight: 500; }
 
   /* ---- protocol timeline ---- */
   .protocol-timeline {
@@ -187,7 +187,7 @@ const steps = [
   .pt-snum { font-family: var(--font-mono); font-size: 70px; font-weight: 900; line-height: 0.8; color: var(--vital); opacity: 0.06; margin-bottom: -10px; user-select: none; }
   .pt-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vital); margin-bottom: 12px; }
   .pt-info h3 { font-size: clamp(22px, 2.5vw, 28px); margin-bottom: 12px; line-height: 1.2; color: var(--bone); }
-  .pt-info p { font-size: 15px; color: var(--mute); line-height: 1.6; }
+  .pt-info p { font-size: 17px; color: var(--bone); line-height: 1.6; font-weight: 500; }
 
   /* Media Constraints */
   .pt-media-grid { display: grid; gap: 16px; }
@@ -247,6 +247,7 @@ const steps = [
 
   @media (max-width: 560px) {
     .cta-wrap .btn { width: 100%; }
-    .shots.two { grid-template-columns: 1fr; }
+    .pt-card { padding: 16px; gap: 20px; }
+    .pt-info h3 { font-size: 20px; }
   }
 </style>

@@ -8,7 +8,7 @@ import poster from '../../assets/img/img-41-a9cca289.jpg';
   <div class="container">
     <div class="rv d1"><span class="badge-pill">💎 Ваши выгоды</span></div>
     <span class="eyebrow rv d1">Что вы получите за 90 минут</span>
-    <h2 class="rv d2">Я не открою вам Америку. Вы и так знаете <span class="hl text-hl-bg">слабые места</span> своего проекта<span class="e">🎯</span></h2>
+    <h2 class="rv d2">Я не открою вам Америку. Вы и так знаете <span class="hl">слабые места</span> своего проекта<span class="e">🎯</span></h2>
     <p class="lead rv d3">Но за 90 минут произойдёт две вещи, которых обычно не хватает, чтобы наконец сдвинуться.</p>
 
     <div class="gains">
@@ -58,7 +58,7 @@ import poster from '../../assets/img/img-41-a9cca289.jpg';
 
 <style>
   #blk6 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 14px; max-width: 28ch; }
-  .lead { color: var(--mute); font-size: clamp(15px, 1.8vw, 19px); line-height: 1.6; max-width: 56ch; margin-bottom: clamp(36px, 5vw, 52px); font-weight: 500; }
+  .lead { color: var(--bone); font-size: clamp(17px, 2vw, 21px); line-height: 1.6; max-width: 60ch; margin-bottom: clamp(36px, 5vw, 52px); font-weight: 500; }
 
   /* ---- gains cards ---- */
   .gains { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: clamp(40px, 6vw, 60px); }
@@ -87,7 +87,7 @@ import poster from '../../assets/img/img-41-a9cca289.jpg';
   }
   .gain .lbl { font-weight: 700; font-size: 15px; color: var(--vital); }
   .gain h3 { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.25; margin-bottom: 10px; }
-  .gain p { font-size: 15px; line-height: 1.6; color: var(--mute); font-weight: 500; }
+  .gain p { font-size: 16px; line-height: 1.6; color: var(--bone); font-weight: 500; }
 
   /* ---- live video ---- */
   .live { margin-bottom: clamp(36px, 5vw, 52px); }
@@ -132,5 +132,9 @@ import poster from '../../assets/img/img-41-a9cca289.jpg';
 
   @media (max-width: 560px) {
     .closer .btn { width: 100%; }
+    .live-bar { padding: 8px 10px; }
+    .live-bar .l { font-size: 8px; letter-spacing: 0.1em; }
+    .gain { padding: 20px; }
+    .gain h3 { font-size: 18px; }
   }
 </style>

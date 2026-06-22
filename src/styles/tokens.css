@@ -34,7 +34,6 @@
 
   /* типографика */
   --font-sans: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
-  --font-hand: 'Caveat Variable', 'Caveat', cursive;
   --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 
   /* геометрия / тайминги */
@@ -46,5 +45,5 @@
 }
 
 @media (max-width: 560px) {
-  :root { --pad: 20px; }
+  :root { --pad: 16px; --r: 14px; --r-sm: 10px; }
 }

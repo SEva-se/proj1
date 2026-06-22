@@ -40,7 +40,7 @@ const reviews = [
   <div class="container">
     <div class="head rv">
       <span class="eyebrow">Отзывы пациентов</span>
-      <h2 class="rv d2">Что говорят пациенты, которые <span class="hl text-hl-bg">прошли обследование</span><span class="e">💬</span></h2>
+      <h2 class="rv d2">Что говорят пациенты, которые <span class="hl">прошли обследование</span><span class="e">💬</span></h2>
     </div>
     <div class="board">
       {reviews.map((r) => (
@@ -93,7 +93,7 @@ const reviews = [
     padding: 10px 18px 20px; font-size: 14px; line-height: 1.6;
     color: var(--mute); font-weight: 500; flex: 1;
   }
-  .q { display: inline-block; font-family: var(--font-hand); font-size: 34px; color: var(--vital); line-height: 0; vertical-align: -10px; margin-right: 8px; }
+  .q { display: inline-block; font-size: 28px; font-weight: 800; color: var(--vital); line-height: 0; vertical-align: -6px; margin-right: 8px; }
   .quote :global(.mark) {
     color: var(--bone); font-weight: 600;
     background: linear-gradient(transparent 60%, var(--vital-soft) 60%);
@@ -103,5 +103,7 @@ const reviews = [
 
   @media (max-width: 560px) {
     .cta-wrap .btn { width: 100%; }
+    .niche { padding: 12px 14px 0; font-size: 9px; }
+    .quote { padding: 8px 14px 16px; font-size: 13px; }
   }
 </style>

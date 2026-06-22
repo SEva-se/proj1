@@ -36,7 +36,7 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
           <div class="sym-left rv d1">
             <div class="rv d1"><span class="badge-pill">🩺 Диагностика проблем</span></div>
             <span class="eyebrow">Симптомы проекта</span>
-            <h2 class="rv d2">Узнаёте свой проект? Это самые частые симптомы, которые мы встречаем на <span class="hl text-hl-bg">обследованиях</span><span class="e">📊</span></h2>
+            <h2 class="rv d2">Узнаёте свой проект? Это самые частые симптомы, которые мы встречаем на <span class="hl">обследованиях</span><span class="e">📊</span></h2>
           </div>
 
           <!-- Правая колонка: стопка карточек -->
@@ -58,12 +58,14 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
                         <p>{c.sym}</p>
                       </div>
                     </div>
-                    <div class="cdiv"></div>
                     <div class="fld think">
                       <div class="lbl">Что обычно думают 💭</div>
                       <p>{c.think}</p>
                     </div>
                     <div class="dx">
+                      <div class="dx-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+                      </div>
                       <div class="lbl">
                         <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         Что часто оказывается на практике 💡
@@ -109,7 +111,7 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
   }
 
   /* ---- Card Stack ---- */
-  .sym-stack { display: grid; width: 100%; max-width: 480px; margin: 0 auto; perspective: 1200px; }
+  .sym-stack { display: grid; width: 100%; max-width: 500px; margin: 0 auto; perspective: 1200px; }
   
   .pc {
     display: flex; flex-direction: column;
@@ -133,12 +135,12 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
   }
 
   .pc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-  .badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--gold); border: 1px solid var(--gold-line); border-radius: 4px; padding: 5px 10px; text-transform: uppercase; }
-  .status { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--mute); text-transform: uppercase; white-space: nowrap; }
-  .status .d { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-line); }
+  .badge { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--gold); border: 1px solid var(--gold-line); border-radius: 4px; padding: 5px 10px; text-transform: uppercase; font-weight: 600; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--bone); text-transform: uppercase; white-space: nowrap; font-weight: 700; }
+  .status .d { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold-line); }
 
-  .pc-body { padding: 20px 18px; display: flex; flex-direction: column; gap: 15px; flex: 1; }
-  .sympt { display: flex; align-items: flex-start; gap: 13px; }
+  .pc-body { padding: 20px 18px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .sympt { display: flex; align-items: flex-start; gap: 14px; }
   .av {
     width: 44px; height: 44px; flex: none; border-radius: 8px;
     display: grid; place-items: center;
@@ -146,21 +148,50 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
   }
   .av svg { width: 22px; height: 22px; fill: none; stroke: var(--vital); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-  .fld .lbl { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mute-2); margin-bottom: 6px; }
-  .fld.sym .lbl { color: var(--mute); }
-  .fld.sym p { font-size: clamp(15px, 1.9vw, 17px); font-weight: 600; line-height: 1.32; color: var(--bone); }
-  .fld.think p { font-size: 14px; font-weight: 500; line-height: 1.4; color: var(--mute); }
-  .cdiv { height: 1px; background: var(--line); }
+  .fld .lbl { 
+    display: inline-block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; 
+    text-transform: uppercase; color: var(--bone); font-weight: 700; 
+    margin-bottom: 8px; padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.05); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .fld.sym p { font-size: clamp(16px, 2.1vw, 19px); font-weight: 700; line-height: 1.35; color: var(--bone); text-transform: uppercase; }
+  
+  .fld.think {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 2px 0;
+  }
+  .fld.think .lbl { color: var(--gold); background: rgba(230, 185, 128, 0.1); border-color: rgba(230, 185, 128, 0.2); margin-bottom: 10px; }
+  .fld.think p { 
+    font-size: 18px; font-weight: 500; font-style: italic; line-height: 1.4; color: var(--bone); 
+  }
+  .fld.think p::before { content: "«"; color: rgba(255,255,255,0.2); margin-right: 4px; }
+  .fld.think p::after { content: "»"; color: rgba(255,255,255,0.2); margin-left: 4px; }
 
   .dx {
-    margin: auto -18px -20px; padding: 16px 18px 18px;
+    margin: auto -18px -20px; padding: 20px 18px 20px;
     background: var(--vital-soft); border-top: 1px solid var(--vital-line);
     position: relative;
   }
-  .dx::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--vital); }
-  .dx .lbl { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vital); margin-bottom: 7px; }
-  .dx .lbl svg { width: 13px; height: 13px; fill: none; stroke: var(--vital); stroke-width: 2.6; }
-  .dx p { font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--bone); }
+  .dx-arrow {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2);
+    border: 1px solid var(--vital-line); display: grid; place-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .dx-arrow svg { width: 16px; height: 16px; fill: none; stroke: var(--vital); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .dx::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--vital); }
+  .dx .lbl { 
+    display: inline-flex; align-items: center; gap: 8px; 
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; 
+    text-transform: uppercase; color: var(--vital); font-weight: 700; 
+    margin-bottom: 10px; padding: 5px 10px;
+    background: rgba(63, 221, 154, 0.1); border-radius: 6px; border: 1px solid rgba(63, 221, 154, 0.2);
+  }
+  .dx .lbl svg { width: 16px; height: 16px; fill: none; stroke: var(--vital); stroke-width: 2.6; }
+  .dx p { font-size: 15px; font-weight: 700; line-height: 1.5; color: var(--bone); }
 
   .closer {
     max-width: 660px; margin: clamp(44px, 6vw, 72px) auto 0;
@@ -172,7 +203,11 @@ const pad2 = (n: number) => String(n + 1).padStart(2, '0');
 
   @media (max-width: 560px) {
     .closer .btn.lg { width: 100%; }
-    .dx { margin: 4px -18px -20px; }
+    .dx { margin: 4px -16px -16px; padding: 14px 16px 16px; }
+    .pc-head { padding: 12px 16px; }
+    .pc-body { padding: 16px 16px; gap: 12px; }
+    .av { width: 36px; height: 36px; }
+    .av svg { width: 18px; height: 18px; }
   }
 </style>
 

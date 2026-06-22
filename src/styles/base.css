@@ -3,7 +3,6 @@
 
 /* самохостинг шрифтов (Fontsource variable, index.css включает latin+cyrillic) */
 @import '@fontsource-variable/montserrat/index.css';
-@import '@fontsource-variable/caveat/index.css';
 @import '@fontsource-variable/jetbrains-mono/index.css';
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,14 +36,6 @@ h1, h2, h3 {
 .hl { color: var(--vital); }
 .am { color: var(--amber); }
 
-/* каллиграфический акцент — «почерк врача», строго дозированно (DESIGN.md §3) */
-.hand {
-  font-family: var(--font-hand);
-  font-weight: 700;
-  letter-spacing: 0;
-  color: var(--vital);
-  line-height: 1;
-}
 
 /* технические лейблы */
 .mono {
@@ -52,21 +43,29 @@ h1, h2, h3 {
   font-weight: 500;
 }
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(18px, 2.2vw, 21px);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--vital);
+  color: var(--bone);
+  font-weight: 800;
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  background: rgba(63, 221, 154, 0.05);
+  border: 1px solid var(--vital);
+  border-radius: 0;
+  animation: frame-pulse 3s infinite alternate;
 }
-.eyebrow::before {
-  content: "";
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--vital);
-  box-shadow: 0 0 12px var(--vital);
+@keyframes frame-pulse {
+  0% {
+    border-color: rgba(63, 221, 154, 0.3);
+    box-shadow: 0 0 5px rgba(63, 221, 154, 0.1), inset 0 0 5px rgba(63, 221, 154, 0.1);
+  }
+  100% {
+    border-color: rgba(63, 221, 154, 0.9);
+    box-shadow: 0 0 20px rgba(63, 221, 154, 0.4), inset 0 0 10px rgba(63, 221, 154, 0.2);
+  }
 }
 
 /* ---- layout утилиты ---- */
@@ -75,7 +74,7 @@ h1, h2, h3 {
   margin-inline: auto;
   padding-inline: var(--pad);
 }
-.section { position: relative; padding: clamp(64px, 9vw, 128px) 0; }
+.section { position: relative; padding: clamp(48px, 9vw, 128px) 0; }
 .sdiv {
   height: 1px;
   max-width: var(--maxw);
@@ -104,6 +103,11 @@ h1, h2, h3 {
 .btn.lg { padding: 20px 38px; font-size: 17px; }
 .btn.ghost { background: transparent; color: var(--bone); border: 1px solid var(--line); }
 .btn.ghost svg { stroke: var(--bone); }
+
+@media (max-width: 560px) {
+  .btn { padding: 14px 24px; font-size: 15px; }
+  .btn.lg { padding: 16px 28px; font-size: 16px; }
+}
 
 /* ---- иконка-в-капсуле (DESIGN.md §6) ---- */
 .ic-cap {
@@ -159,22 +163,6 @@ h1, h2, h3 {
 }
 .badge-pill.gold { color: var(--gold); border-color: var(--gold-line); }
 
-.text-hl-bg {
-  color: var(--bone);
-  padding: 0 4px;
-  background-image: linear-gradient(var(--vital-line), var(--vital-line));
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  background-position: left center;
-  transition: background-size 0.6s var(--ease);
-  border-radius: 4px;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-.rv.in .text-hl-bg {
-  background-size: 100% 100%;
-  transition-delay: 0.4s;
-}
 
 /* ---- микро-анимации карточек (усиленный hover) ---- */
 .hover-card { transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }

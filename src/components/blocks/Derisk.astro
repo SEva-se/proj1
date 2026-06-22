@@ -16,7 +16,7 @@ const ribbonImages = [img18, img19, img20, img21, img22, img23, img24, img25];
 <section class="section" id="blk7">
   <div class="container">
     <span class="eyebrow rv">Почему это бесплатно</span>
-    <h2 class="rv d2">Зачем мне проводить диагностику <span class="hl text-hl-bg">бесплатно</span><span class="e">🤝</span></h2>
+    <h2 class="rv d2">Зачем мне проводить диагностику <span class="hl">бесплатно</span><span class="e">🤝</span></h2>
 
     <div class="body">
       <p class="rv d1">Диагностику я запускаю не постоянно. И когда запускаю, провожу её лично, сам.</p>
@@ -56,7 +56,7 @@ const ribbonImages = [img18, img19, img20, img21, img22, img23, img24, img25];
   #blk7 h2 { font-size: clamp(25px, 3.8vw, 44px); line-height: 1.14; margin: 18px 0 clamp(20px, 3vw, 28px); max-width: 22ch; }
 
   .body { max-width: 660px; margin-bottom: clamp(36px, 5vw, 52px); }
-  .body p { font-size: clamp(15px, 1.8vw, 18px); line-height: 1.65; color: var(--mute); font-weight: 500; }
+  .body p { font-size: clamp(17px, 2vw, 21px); line-height: 1.65; color: var(--bone); font-weight: 500; }
   .body p + p { margin-top: 14px; }
 
   /* ---- бегущая лента скриншотов ---- */
@@ -103,5 +103,7 @@ const ribbonImages = [img18, img19, img20, img21, img22, img23, img24, img25];
 
   @media (max-width: 560px) {
     .cta-wrap .btn { width: 100%; }
+    .derisk { padding: 16px; flex-direction: column; gap: 12px; }
+    .derisk p { font-size: 14px; }
   }
 </style>

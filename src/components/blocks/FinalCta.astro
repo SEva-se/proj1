@@ -14,7 +14,7 @@
 
       <div class="file-body">
         <div class="rv d1"><span class="badge-pill gold">⚡ Решение за вами</span></div>
-        <h2 class="rv d2">Пора поставить <span class="hl text-hl-bg">точный диагноз</span><span class="e">🩺</span></h2>
+        <h2 class="rv d2">Пора поставить <span class="hl">точный диагноз</span><span class="e">🩺</span></h2>
         <p class="sub rv d3">Оформите карточку пациента и выберите удобное время для диагностики.</p>
 
         <a href="/zayavka" class="btn lg pulse rv d3">
@@ -68,9 +68,9 @@
     font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin-bottom: 14px;
   }
   .sub {
-    color: var(--mute); font-size: clamp(15px, 1.8vw, 18px);
+    color: var(--bone); font-size: clamp(17px, 2vw, 21px);
     line-height: 1.6; font-weight: 500; margin-bottom: clamp(24px, 4vw, 36px);
-    max-width: 36ch;
+    max-width: 42ch;
   }
 
   .file-body .btn.lg { border-radius: 6px; margin-bottom: clamp(28px, 4vw, 40px); }
@@ -89,5 +89,6 @@
 
   @media (max-width: 560px) {
     .file-body .btn.lg { width: 100%; }
+    .file-body { padding: 24px 16px; }
   }
 </style>
