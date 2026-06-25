@@ -33,7 +33,7 @@ const checks = [
   ['blk7 derisk', 'Никаких обязательств'],
 
   // blk8
-  ['blk8 eyebrow', 'Кто проводит диагностику'],
+  ['blk8 eyebrow', 'Кто проводит обследование'],
   ['blk8 name', 'Рустам Михайлов'],
   ['blk8 role', 'маркетинг-хирург'],
   ['blk8 ig', '@mihaylov.rustam'],

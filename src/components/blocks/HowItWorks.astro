@@ -1,8 +1,8 @@
 ---
 // blk11 · Как проходит обследование проекта — 4 шага.
 // Весь текст ДОСЛОВНО из «Сайт новый.html».
-import { Image } from 'astro:assets';
 import zoomImg from '../../assets/img/img-17-5fb8dcf8.jpg';
+import zoomVideo from '../../assets/img/proof/download.mp4';
 
 const steps = [
   { num: '01', tag: 'Шаг 1', h3: 'Записываемся на приём', p: 'После заявки мы связываемся с вами и согласовываем удобное время встречи.' },
@@ -24,7 +24,17 @@ const steps = [
         <span class="d"></span><span class="d"></span><span class="d"></span>
         <span class="l"><span class="rec"></span>Онлайн · Zoom</span>
       </div>
-      <Image src={zoomImg} alt="Встреча в Zoom" loading="lazy" />
+      <video
+        class="feature-video"
+        src={zoomVideo}
+        poster={zoomImg.src}
+        autoplay
+        muted
+        loop
+        playsinline
+        disablepictureinpicture
+        preload="metadata"
+      ></video>
     </div>
 
     <div class="steps">
@@ -80,6 +90,7 @@ const steps = [
     animation: blink 1.8s infinite;
   }
   .feature :global(img) { width: 100%; display: block; height: auto; }
+  .feature-video { width: 100%; display: block; height: auto; background: #000; pointer-events: none; }
 
   /* ---- steps ---- */
   .steps {

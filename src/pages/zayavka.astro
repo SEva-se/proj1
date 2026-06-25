@@ -2,8 +2,6 @@
 // Анкета на обследование (4 шага + финал).
 // Перенесено ДОСЛОВНО из «страница заявки.html».
 import Base from '../layouts/Base.astro';
-import { Image } from 'astro:assets';
-import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
 ---
 
 <Base title="INFO CLINIC · Анкета на обследование">
@@ -81,6 +79,17 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
 
       <!-- STEP 4 -->
       <div class="step" data-step="4">
+        <span class="eyebrow">Готовность</span>
+        <p class="q sub">Как показывает практика, чтобы выйти на доход $10 000+ в месяц нужно инвестировать своё время, силы и деньги в проект</p>
+        <p class="q">Скажите, пожалуйста, насколько вы сейчас готовы к этому?</p>
+        <div class="opts one" data-q="readiness">
+          <button class="opt" data-val="Да, готов(а) инвестировать в свой проект и выйти на новый уровень"><span>Да, готов(а) инвестировать в свой проект и выйти на новый уровень</span><span class="tick"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></span></button>
+          <button class="opt" data-val="Пока не готов(а) инвестировать в развитие проекта"><span>Пока не готов(а) инвестировать в развитие проекта</span><span class="tick"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></span></button>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step" data-step="5">
         <span class="eyebrow">Последний шаг</span>
         <h1>Последний шаг перед обследованием</h1>
         <div class="fields">
@@ -102,13 +111,43 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     <!-- FINAL -->
     <div class="final" id="final">
       <div class="final-img">
-        <Image src={finalImg} alt="Карточка пациента" />
+        <div class="pcard">
+          <div class="pcard-head">
+            <span class="pcard-brand">
+              <svg viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="17" stroke="#1f5e44" stroke-width="1.6" fill="none" opacity=".6"></circle>
+                <path d="M7 20h6l3-8 5 16 3-8h9" stroke="#1f7a55" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              INFO CLINIC
+            </span>
+            <span class="pcard-id" id="pcId">№ 000000</span>
+          </div>
+          <div class="pcard-title">Карта пациента</div>
+          <div class="pcard-rows">
+            <div class="pcard-row" id="rowNiche"><span class="k">Ниша</span><span class="v" id="pcNiche">—</span></div>
+            <div class="pcard-row" id="rowGoal"><span class="k">Цель · 3 мес</span><span class="v" id="pcGoal">—</span></div>
+            <div class="pcard-row" id="rowIncome"><span class="k">Текущий доход</span><span class="v" id="pcIncome">—</span></div>
+            <div class="pcard-row" id="rowIg"><span class="k">Instagram</span><span class="v" id="pcIg">—</span></div>
+            <div class="pcard-row" id="rowTg"><span class="k">Telegram</span><span class="v" id="pcTg">—</span></div>
+          </div>
+          <div class="pcard-foot">
+            <div class="pcard-sign">
+              <span class="pcard-signmark">INFO CLINIC</span>
+              <span class="pcard-signcap">приёмная клиники</span>
+            </div>
+            <div class="pcard-stamp">
+              <span class="stamp-top">принято</span>
+              <span class="stamp-mid">в обработку</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="final-text">
         <p>Ваша заявка на обследование проекта принята. Сейчас она находится на рассмотрении и уже передана в приёмную INFO CLINIC. Нам потребуется немного времени, чтобы ознакомиться с вашим проектом.</p>
         <div class="nextstep">Обязательный следующий шаг</div>
         <p class="rec">Перейдите в Telegram. Там находятся дополнительные материалы по методике обследования, кейсы и вся дальнейшая информация по записи.</p>
-        <a class="btn ghost" href="https://t.me/your_bot_link" target="_blank" rel="noopener">Перейти в Telegram <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn lg tg-cta" id="tgBtn" href="https://t.me/your_bot_link" target="_blank" rel="noopener"><span class="tg-label">Перейти в Telegram</span> <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></a>
+        <p class="redir">Автоматический переход в Telegram через <span id="redirCount">10</span> сек…</p>
       </div>
     </div>
 
@@ -195,7 +234,7 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: .1em;
-    color: var(--mute);
+    color: var(--bone);
   }
   .bar {
     height: 5px;
@@ -267,8 +306,8 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     margin-bottom: 24px;
   }
   .q.sub {
-    color: var(--mute);
-    font-weight: 300;
+    color: var(--bone);
+    font-weight: 400;
     font-size: 15px;
     margin-top: -2px;
     margin-bottom: 26px;
@@ -290,7 +329,7 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     position: relative;
     text-align: left;
     border: 1px solid var(--line);
-    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    background: var(--card);
     border-radius: 14px;
     padding: 18px 18px;
     font-family: var(--font-sans);
@@ -330,7 +369,8 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
   }
   .opt.sel {
     border-color: var(--vital);
-    background: var(--vital-soft);
+    background-color: var(--card);
+    background-image: linear-gradient(var(--vital-soft), var(--vital-soft));
   }
   .opt.sel .tick {
     background: var(--vital);
@@ -352,7 +392,7 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
   }
   .field {
     width: 100%;
-    background: var(--surface-2);
+    background: var(--card);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 16px 16px;
@@ -363,7 +403,7 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     transition: border-color 0.25s var(--ease);
   }
   .field::placeholder {
-    color: var(--mute-2);
+    color: var(--mute);
   }
   .field:focus {
     border-color: var(--vital-line);
@@ -381,13 +421,13 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     font-size: 10px;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--mute-2);
+    color: var(--bone);
     margin-bottom: 8px;
     display: block;
   }
   .note {
     font-size: 12.5px;
-    color: var(--mute-2);
+    color: var(--bone);
     margin-top: 14px;
     line-height: 1.5;
   }
@@ -473,14 +513,165 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* ---- динамическая карта пациента (бумажный документ) ---- */
+  .pcard {
+    --ink: #2a2620;
+    --ink-soft: #6b6256;
+    --rule: rgba(42, 38, 32, .28);
+    --green-ink: #1f7a55;
+    --red-ink: #a8432e;
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,.5), transparent 55%),
+      linear-gradient(180deg, #f6eede 0%, #ece0c9 100%);
+    border: 1px solid #d8cab0;
+    border-radius: 5px;
+    padding: 26px 26px 22px 42px;
+    color: var(--ink);
+    box-shadow:
+      0 2px 2px rgba(0,0,0,.16),
+      0 28px 64px -30px rgba(0,0,0,.85);
+    transform: rotate(-0.7deg);
+  }
+  /* красное поле слева, как в бланке */
+  .pcard::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 28px; width: 1.5px;
+    background: rgba(168, 67, 46, .45); z-index: 0;
+  }
+  /* лёгкая фактура бумаги */
+  .pcard::after {
+    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    border-radius: 5px;
+    background: repeating-linear-gradient(0deg, rgba(42,38,32,.022) 0 1px, transparent 1px 3px);
+    mix-blend-mode: multiply; opacity: .6;
+  }
+  .pcard > * { position: relative; z-index: 1; }
+
+  .pcard-head {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink);
+  }
+  .pcard-brand {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink);
+  }
+  .pcard-brand svg { width: 22px; height: 22px; }
+  .pcard-id {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-soft);
+  }
+  .pcard-title {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .34em;
+    text-transform: uppercase; color: var(--red-ink); font-weight: 700;
+    margin: 13px 0 4px;
+  }
+  .pcard-rows { display: flex; flex-direction: column; }
+  .pcard-row {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    padding: 11px 0; border-bottom: 1px dotted var(--rule);
+  }
+  .pcard-row .k {
+    flex: none;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .pcard-row .v {
+    text-align: right; color: var(--ink);
+    font-size: 15px; font-weight: 700; line-height: 1.35;
+  }
+  .pcard-foot {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 14px;
+    margin-top: 18px;
+  }
+  .pcard-sign { display: flex; flex-direction: column; }
+  .pcard-signmark {
+    font-family: 'Caveat Variable', 'Caveat', cursive;
+    font-size: 28px; line-height: .85; color: var(--green-ink);
+    transform: rotate(-5deg); transform-origin: left center;
+  }
+  .pcard-signcap {
+    font-family: var(--font-mono); font-size: 8px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-soft);
+    border-top: 1px solid var(--rule); padding-top: 4px; margin-top: 8px;
+  }
+  .pcard-stamp {
+    position: relative; flex: none;
+    width: 92px; height: 92px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 2.5px solid var(--green-ink); color: var(--green-ink);
+    box-shadow: inset 0 0 0 4px rgba(31, 122, 85, .16);
+    transform: rotate(-13deg); opacity: .82;
+  }
+  .stamp-top {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 800;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  .stamp-mid {
+    font-family: var(--font-mono); font-size: 7.5px; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; margin-top: 2px;
+  }
+  @media (max-width: 759px) {
+    .pcard { transform: none; }
+  }
+
   .final-text {
     text-align: left;
   }
   .final-text p {
-    color: var(--mute);
+    color: var(--bone);
     font-size: 15.5px;
     line-height: 1.6;
     margin-bottom: 14px;
+  }
+  .redir {
+    margin-top: 16px !important;
+    font-family: var(--font-mono);
+    font-size: 12px !important;
+    letter-spacing: .04em;
+    color: var(--mute) !important;
+  }
+  .redir #redirCount { color: var(--vital); font-weight: 700; }
+
+  /* ---- акцентная анимированная CTA в Telegram ---- */
+  .tg-cta {
+    position: relative;
+    overflow: hidden;
+    color: #04140c;
+    font-weight: 700;
+    background: linear-gradient(100deg, #3fdd9a 0%, #2bbd7e 50%, #3fdd9a 100%);
+    background-size: 200% 100%;
+    box-shadow: 0 10px 30px -8px rgba(63, 221, 154, .55);
+    animation: tg-glow 2.6s ease-in-out infinite, tg-bg 6s linear infinite;
+  }
+  .tg-cta .tg-label, .tg-cta svg { position: relative; z-index: 2; }
+  .tg-cta svg { stroke: #04140c; transition: transform .35s var(--ease); }
+  .tg-cta:hover svg { transform: translateX(4px) rotate(8deg); }
+  /* пробегающий блик */
+  .tg-cta::before {
+    content: "";
+    position: absolute; top: 0; left: -75%; width: 55%; height: 100%; z-index: 1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,.6) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    animation: tg-sweep 3.4s ease-in-out infinite;
+  }
+  .tg-cta:hover {
+    transform: translateY(-3px) scale(1.025);
+    box-shadow: 0 18px 48px -8px rgba(63, 221, 154, .85);
+  }
+  @keyframes tg-glow {
+    0%, 100% { box-shadow: 0 8px 24px -8px rgba(63, 221, 154, .45); }
+    50% { box-shadow: 0 16px 44px -6px rgba(63, 221, 154, .85); }
+  }
+  @keyframes tg-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes tg-sweep {
+    0% { left: -75%; }
+    55%, 100% { left: 130%; }
   }
   .nextstep {
     display: inline-flex;
@@ -552,9 +743,9 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
 
 <script>
   (function(){
-    const TOTAL = 4;
+    const TOTAL = 5;
     let cur = 1;
-    const answers = { niche: null, goal: null, income: null, ig: '', tg: '' };
+    const answers = { niche: null, goal: null, income: null, readiness: null, ig: '', tg: '' };
 
     const stepno = document.getElementById('stepno');
     const barfill = document.getElementById('barfill');
@@ -575,7 +766,7 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
       });
       if (stepno) stepno.textContent = 'Шаг ' + cur + ' из ' + TOTAL;
       if (barfill) barfill.style.width = progressPct(cur) + '%';
-      if (back) back.classList.toggle('show', cur > 1);
+      if (back) back.classList.add('show');
     }
 
     function go(step: number) {
@@ -653,7 +844,11 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
 
     if (back) {
       back.addEventListener('click', function() {
-        if (cur > 1) go(cur - 1);
+        if (cur > 1) {
+          go(cur - 1);
+        } else {
+          window.location.href = '/';
+        }
       });
     }
 
@@ -671,6 +866,49 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
     if (ig) ig.addEventListener('input', checkContact);
     if (tg) tg.addEventListener('input', checkContact);
 
+    // заполнение динамической «карты пациента» из ответов
+    function fillPatientCard() {
+      function setRow(rowId: string, valId: string, value: string) {
+        const row = document.getElementById(rowId);
+        const v = document.getElementById(valId);
+        if (!row || !v) return;
+        if (value && value.trim()) {
+          v.textContent = value.trim();
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      }
+      setRow('rowNiche', 'pcNiche', answers.niche || '');
+      setRow('rowGoal', 'pcGoal', answers.goal || '');
+      setRow('rowIncome', 'pcIncome', answers.income || '');
+      setRow('rowIg', 'pcIg', answers.ig);
+      setRow('rowTg', 'pcTg', answers.tg);
+
+      const idEl = document.getElementById('pcId');
+      if (idEl) {
+        const n = Math.floor(100000 + Math.random() * 900000);
+        idEl.textContent = '№ ' + n;
+      }
+    }
+
+    // авто-переход в Telegram через 10 секунд с обратным отсчётом
+    function startTelegramRedirect() {
+      const tgBtn = document.getElementById('tgBtn') as HTMLAnchorElement | null;
+      const countEl = document.getElementById('redirCount');
+      const link = tgBtn ? tgBtn.href : '';
+      let left = 10;
+      if (countEl) countEl.textContent = String(left);
+      const timer = window.setInterval(function() {
+        left -= 1;
+        if (countEl) countEl.textContent = String(Math.max(left, 0));
+        if (left <= 0) {
+          window.clearInterval(timer);
+          if (link) window.location.href = link;
+        }
+      }, 1000);
+    }
+
     if (submit) {
       submit.addEventListener('click', function() {
         if (!ig || !tg) return;
@@ -680,12 +918,16 @@ import finalImg from '../assets/img/img-quiz-final-1f68511d.jpg';
         // TODO: В Фазе 2 подключить реальный приёмник заявок (TG bot / webhook / CRM)
         console.log('Отправка анкеты:', answers);
 
+        fillPatientCard();
+
         if (topbar) topbar.style.display = 'none';
         const wrapEl = document.querySelector('.wrap');
         if (wrapEl) wrapEl.classList.add('wide');
         if (stage) stage.style.display = 'none';
         if (finalEl) finalEl.classList.add('active');
         if (barfill) barfill.style.width = '100%';
+
+        startTelegramRedirect();
       });
     }
 

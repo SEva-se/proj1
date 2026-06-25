@@ -4,6 +4,7 @@
 /* самохостинг шрифтов (Fontsource variable, index.css включает latin+cyrillic) */
 @import '@fontsource-variable/montserrat/index.css';
 @import '@fontsource-variable/jetbrains-mono/index.css';
+@import '@fontsource-variable/caveat/index.css';
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 

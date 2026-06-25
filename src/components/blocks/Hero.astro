@@ -21,12 +21,10 @@
       
       <div class="hero-left">
         <div class="rv d1"><span class="badge-pill">🔥 Доступ ограничен</span></div>
-        <span class="hero-eyebrow rv d1">Персональная диагностика · для экспертов и онлайн-школ</span>
-        
+        <span class="hero-eyebrow rv d1">Персональный ZOOM разбор для экспертов и онлайн школ</span>
+
         <h1 class="rv d2">
-          За 90 минут найду<br>
-          <span class="hl">3 точки</span>,<br>
-          из-за которых ваш проект теряет клиентов, заявки и деньги<span class="e">💸</span>
+          Найдём <span class="hl">3 главные причины</span>, которые тормозят рост, и составим пошаговый план выхода на <span class="hl">$10 000+ в месяц</span>
         </h1>
       </div>
 
@@ -35,10 +33,32 @@
           <div class="lc-icon">
             <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <p>Это не очередная бесплатная консультация и не созвон ради продажи. Это <b>глубокое обследование вашего проекта</b>, чтобы найти причину, которая сдерживает рост, и дать вам понятный план дальнейших действий 🚀.</p>
+          <p class="lc-title">На обследовании разберём:</p>
+          <ul class="lc-list">
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              Продукт и оффер
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              Автоворонку <span class="lc-muted">(если нет, подберем)</span>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              Маркетинг и трафик
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              Точки роста проекта
+            </li>
+          </ul>
         </div>
 
         <div class="cta-block rv d3">
+          <div class="slots-banner">
+            <span class="slots-dot"></span>
+            В этом месяце осталось <b>5 мест</b> на бесплатное обследование
+          </div>
           <a href="/zayavka" class="btn lg pulse hero-btn">
             Пройти бесплатное обследование
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -178,10 +198,77 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
   .lc-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--vital); stroke-width: 2; }
-  .lead-card p { margin: 0; color: var(--bone); font-size: clamp(15px, 1.8vw, 17px); line-height: 1.6; font-weight: 500; }
-  .lead-card p b { color: var(--vital); font-weight: 700; }
+  .lc-title {
+    margin: 0 0 18px;
+    color: var(--bone);
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.5;
+    font-weight: 700;
+  }
+  .lc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .lc-list li {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: var(--bone);
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .lc-list .ci {
+    flex: none;
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    background: rgba(63, 221, 154, 0.12);
+    border: 1px solid rgba(63, 221, 154, 0.35);
+    box-shadow: 0 0 14px rgba(63, 221, 154, 0.12);
+  }
+  .lc-list .ci svg {
+    width: 14px; height: 14px;
+    fill: none; stroke: var(--vital); stroke-width: 2.8;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .lc-muted { color: var(--mute); font-weight: 500; }
 
   .cta-block { margin-top: 32px; display: flex; flex-direction: column; align-items: center; }
+  .slots-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    justify-content: center;
+    margin-bottom: 18px;
+    padding: 12px 18px;
+    border-radius: 100px;
+    background: rgba(230, 185, 128, 0.08);
+    border: 1px solid rgba(230, 185, 128, 0.35);
+    color: var(--bone);
+    font-size: clamp(13px, 1.6vw, 14.5px);
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+  }
+  .slots-banner b { color: var(--gold); font-weight: 800; white-space: nowrap; }
+  .slots-dot {
+    flex: none;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+    animation: slots-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes slots-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
   .hero-btn { width: 100%; justify-content: center; font-size: 18px; padding: 20px 30px; border-radius: 12px; }
   .social { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 14px; margin-top: 24px; font-size: 14px; color: var(--mute); }
   .social b { color: var(--bone); font-weight: 700; }
