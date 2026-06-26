@@ -1,16 +1,8 @@
 ---
-// blk7 · Почему это бесплатно — derisk-секция + бегущая лента скриншотов.
+// blk7 · Почему это бесплатно — derisk-секция.
 // Весь текст ДОСЛОВНО из «Сайт новый.html».
-import { Image } from 'astro:assets';
-import img18 from '../../assets/img/img-18-30b8556b.jpg';
-import img19 from '../../assets/img/img-19-94fea308.jpg';
-import img20 from '../../assets/img/img-20-a3b928a4.jpg';
-import img21 from '../../assets/img/img-21-6527325a.jpg';
-import img22 from '../../assets/img/img-22-f8303d4e.jpg';
-import img23 from '../../assets/img/img-23-973e4c09.jpg';
-import img24 from '../../assets/img/img-24-a37d3747.jpg';
-
-const ribbonImages = [img18, img19, img20, img21, img22, img23, img24];
+// Бегущая фото-лента убрана: социальное доказательство фото вынесено в блок
+// «Кто проводит обследование» (Author), чтобы не дублировать галереи.
 ---
 <section class="section" id="blk7">
   <div class="container">
@@ -20,17 +12,6 @@ const ribbonImages = [img18, img19, img20, img21, img22, img23, img24];
     <div class="body">
       <p class="rv d1">Диагностику я запускаю не постоянно. И когда запускаю, провожу её лично, сам.</p>
       <p class="rv d1">Так я отбираю лучших и самых сильных экспертов к себе в воронку, тех, с кем потенциально интересно работать дальше, плотно и вдолгую.</p>
-    </div>
-  </div>
-
-  <div class="ribbon">
-    <div class="track">
-      {ribbonImages.map((src) => (
-        <Image src={src} alt="" loading="lazy" />
-      ))}
-      {ribbonImages.map((src) => (
-        <Image src={src} alt="" loading="lazy" />
-      ))}
     </div>
   </div>
 
@@ -57,25 +38,6 @@ const ribbonImages = [img18, img19, img20, img21, img22, img23, img24];
   .body { max-width: 660px; margin-bottom: clamp(36px, 5vw, 52px); }
   .body p { font-size: clamp(17px, 2vw, 21px); line-height: 1.65; color: var(--bone); font-weight: 500; }
   .body p + p { margin-top: 14px; }
-
-  /* ---- бегущая лента скриншотов ---- */
-  .ribbon {
-    overflow: hidden; width: 100%;
-    margin-bottom: clamp(36px, 5vw, 52px);
-    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  }
-  .track {
-    display: flex; gap: 14px;
-    width: max-content;
-    animation: scrollx 40s linear infinite;
-  }
-  .ribbon:hover .track { animation-play-state: paused; }
-  .track :global(img) {
-    height: clamp(120px, 16vw, 200px); width: auto; border-radius: 6px;
-    border: 1px solid var(--line);
-    flex: none;
-  }
 
   /* ---- derisk block ---- */
   .derisk {

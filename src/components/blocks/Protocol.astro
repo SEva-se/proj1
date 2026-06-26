@@ -195,14 +195,15 @@ const steps = [
   }
 
   /* audit card text block */
-  .audit-card .sub { font-size: 17px; font-weight: 500; text-wrap: pretty; }
+  .audit-card .pt-info { justify-content: flex-start; padding-top: 4px; }
+  .audit-card .sub { font-size: clamp(18px, 2.2vw, 26px); font-weight: 500; line-height: 1.5; text-wrap: pretty; }
 
   /* Info Side */
   .pt-info { position: relative; display: flex; flex-direction: column; justify-content: center; height: 100%; z-index: 1; padding: 20px 0; }
-  .pt-snum { 
-    position: absolute; top: -10px; left: -10px; 
-    font-family: var(--font-mono); font-size: 160px; font-weight: 900; line-height: 0.8; 
-    color: var(--vital); opacity: 0.03; z-index: -1; pointer-events: none; user-select: none; 
+  .pt-snum {
+    position: absolute; top: -22px; right: 10px; left: auto;
+    font-family: var(--font-mono); font-size: 180px; font-weight: 900; line-height: 0.8;
+    color: var(--vital); opacity: 0.10; z-index: 0; pointer-events: none; user-select: none;
   }
   .pt-tag { font-family: var(--font-mono); font-size: 16px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vital); margin-bottom: 12px; }
   .pt-card-header h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; line-height: 1.2; color: var(--bone); margin: 0; }

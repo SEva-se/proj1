@@ -37,19 +37,19 @@
           <ul class="lc-list">
             <li>
               <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              Продукт и оффер
+              <span class="lc-txt">Продукт и оффер</span>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              Автоворонку <span class="lc-muted">(если нет, подберем)</span>
+              <span class="lc-txt">Автоворонку <span class="lc-muted">(если нет, подберем)</span></span>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              Маркетинг и трафик
+              <span class="lc-txt">Маркетинг и трафик</span>
             </li>
             <li>
               <span class="ci"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              Точки роста проекта
+              <span class="lc-txt">Точки роста проекта</span>
             </li>
           </ul>
         </div>
@@ -57,7 +57,7 @@
         <div class="cta-block rv d3">
           <div class="slots-banner">
             <span class="slots-dot"></span>
-            В этом месяце осталось <b>5 мест</b> на бесплатное обследование
+            <span class="slots-text">В этом месяце осталось <b>5 мест</b> на бесплатное обследование</span>
           </div>
           <a href="/zayavka" class="btn lg pulse hero-btn">
             Пройти бесплатное обследование
@@ -222,6 +222,7 @@
     line-height: 1.4;
     font-weight: 600;
   }
+  .lc-list .lc-txt { min-width: 0; }
   .lc-list .ci {
     flex: none;
     width: 26px; height: 26px;
@@ -290,7 +291,7 @@
 
   @media (max-width: 600px) {
     .hero-layout { gap: 32px; }
-    .hero h1 { font-size: 30px; line-height: 1.2; }
+    .hero h1 { font-size: 27px; line-height: 1.22; }
     .hero-eyebrow { font-size: 11px; }
     .lead-card { padding: 32px 20px 20px; }
     .lc-icon { width: 36px; height: 36px; top: -18px; left: 20px; }
