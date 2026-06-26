@@ -5,6 +5,9 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://info-clinic.example',
   compressHTML: true,
+  devToolbar: {
+    enabled: false
+  },
   build: {
     inlineStylesheets: 'auto',
     assets: '_assets',

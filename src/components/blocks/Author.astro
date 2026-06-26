@@ -85,13 +85,21 @@ const miniIcons = [
 
     {proofPhotos.length > 0 && (
       <div class="proof rv">
-        <div class="proof-track">
-          {proofPhotos.map((src, i) => (
-            <figure class="proof-item">
-              <span class="proof-corner"></span>
-              <Image src={src} alt={`Рустам Михайлов · фото ${i + 1}`} loading="lazy" />
-            </figure>
-          ))}
+        <div class="proof-wrapper">
+          <div class="proof-track">
+            {proofPhotos.map((src, i) => (
+              <figure class="proof-item">
+                <span class="proof-corner"></span>
+                <Image src={src} alt={`Рустам Михайлов · фото ${i + 1}`} loading="lazy" />
+              </figure>
+            ))}
+            {proofPhotos.map((src, i) => (
+              <figure class="proof-item clone">
+                <span class="proof-corner"></span>
+                <Image src={src} alt={`Рустам Михайлов · фото ${i + 1}`} loading="lazy" />
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
     )}
@@ -176,27 +184,29 @@ const miniIcons = [
 
   /* ---- фото-хроника (proof gallery) ---- */
   .proof { margin-top: clamp(30px, 4vw, 48px); }
-  .proof-track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 70%;
-    gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 2px 2px 12px;
-    margin: 0 -2px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--vital-line) transparent;
+  .proof-wrapper {
+    overflow: hidden;
+    margin: 0 -2px; padding: 2px;
   }
-  .proof-track::-webkit-scrollbar { height: 6px; }
-  .proof-track::-webkit-scrollbar-thumb { background: var(--vital-line); border-radius: 100px; }
-  .proof-track::-webkit-scrollbar-track { background: transparent; }
+  .proof-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+  .proof-track:hover, .proof-track:active {
+    animation-play-state: paused;
+  }
+  
+  @keyframes marquee {
+    to { transform: translateX(calc(-50% - 6px)); }
+  }
 
   .proof-item {
     position: relative;
     margin: 0;
-    scroll-snap-align: start;
+    width: 45vw;
+    flex-shrink: 0;
     aspect-ratio: 4 / 5;
     border-radius: 10px;
     overflow: hidden;
@@ -221,19 +231,19 @@ const miniIcons = [
   .proof-item:hover :global(img) { transform: scale(1.05); filter: saturate(1.05) contrast(1.03); }
 
   @media (min-width: 620px) {
-    .proof-track { grid-auto-columns: 40%; }
+    .proof-item { width: 35vw; }
   }
   @media (min-width: 900px) {
+    .proof-wrapper { overflow: visible; }
     .proof-track {
-      grid-auto-flow: row;
+      display: grid;
       grid-template-columns: repeat(5, 1fr);
-      grid-auto-columns: auto;
       gap: 14px;
-      overflow: visible;
-      margin: 0;
-      padding: 0;
+      width: 100%;
+      animation: none;
     }
-    .proof-item { aspect-ratio: 3 / 4; }
+    .proof-item { width: auto; aspect-ratio: 3 / 4; }
+    .proof-item.clone { display: none; }
   }
 
   @media (max-width: 560px) {
